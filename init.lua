@@ -1,7 +1,8 @@
 require'statusline.evilline'
 require'plugins'
+require'mappings'
 
-vim.cmd 'colorscheme OceanicNext'
+require('zephyr') --speed colorscheme
 local function load_options()
     local global_local = {
       termguicolors  = true;
@@ -28,7 +29,7 @@ local function load_options()
       shiftround     = true;
       timeout        = true;
       ttimeout       = true;
-      timeoutlen     = 500;
+      timeoutlen     = 0;
       ttimeoutlen    = 10;
       updatetime     = 100;
       redrawtime     = 1500;
@@ -64,7 +65,7 @@ local function load_options()
       pumheight      = 15;
       helpheight     = 12;
       previewheight  = 12;
-      showcmd        = false;
+      showcmd        = true;
       cmdheight      = 2;
       cmdwinheight   = 5;
       equalalways    = false;
@@ -92,7 +93,7 @@ local function load_options()
       number         = true;
     --   colorcolumn    = "80";
       foldenable     = true;
-      signcolumn     = "no";
+      signcolumn     = "yes";
       conceallevel   = 2;
       concealcursor  = "niv";
     }
@@ -108,45 +109,6 @@ local function load_options()
           vim.cmd('set ' .. k .. '=' .. v)
         end
     end
-  end
-  
-
-load_options()
-
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-
-map('c', '<C-A>','<Home>')
-map('c', '<C-E>','<End>')
-map('c', '<C-j>','<t_kd>')
-map('c', '<C-k>','<t_ku>')
-map('i', '<C-a>','<Home>')
-map('i', '<C-e>','<End>')
-map('i', '<C-f>','<Right>')
-map('i', '<C-b>','<Left>')
-map('i', '<C-n>','<Down>')
-map('i', '<C-p>','<Up>')
-map('n', '<Esc>',':nohl<cr>',{silent=true})
-map('n', '<M-[>',':<c-u>put =repeat(nr2char(10), v:count1)<cr>')
-map('n', '<M-]>',':<c-u>put! =repeat(nr2char(10), v:count1)<cr>')
-map('n', 'k','gk')
-map('n', 'j','gj')
-map('n', 'Y','y$')
-map('n', '<M-j>','mz:m+<cr>`z')
-map('n', '<M-k>','mz:m-2<cr>`z')
-map('v', '<M-j>',":m'>+<cr>`<my`>mzgv`yo`z")
-map('v', '<M-k>',":m'<-2<cr>`>my`<mzgv`yo`z")
-map('n', '<D-j>','mz:m+<cr>`z')
-map('n', '<D-k>','mz:m-2<cr>`z')
-map('v', '<D-j>',":m'>+<cr>`<my`>mzgv`yo`z")
-map('v', '<D-k>',":m'<-2<cr>`>my`<mzgv`yo`z")
-map('n', '<localleader>y','"+y')
-map('x', '<localleader>y','"+y')
-map('n', '<localleader>d','"+yydd')
-map('',  '<C-j>','<C-W>j ')
-map('',  '<C-k>','<C-W>k')
-map('',  '<C-h>','<C-W>h')
-map('',  '<C-l>','<C-W>l')
+  
+load_options()

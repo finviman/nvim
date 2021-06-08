@@ -21,7 +21,6 @@ local colors = {
     line_bg = '#353644',
     fg = '#8FBCBB',
     fg_green = '#65a380',
-
     yellow = '#fabd2f',
     cyan = '#008080',
     darkblue = '#081633',
@@ -168,7 +167,7 @@ gls.left[4] = {
 
 gls.left[5] = {
   GitIcon = {
-    provider = function() return '  ' end,
+    provider = function() return '  ' end,
     condition = require('galaxyline.provider_vcs').check_git_workspace,
     highlight = {colors.orange,colors.line_bg},
   }
@@ -193,7 +192,7 @@ gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = ' ',
+    icon = '  ',
     highlight = {colors.green,colors.line_bg},
   }
 }
@@ -202,7 +201,7 @@ gls.left[8] = {
     provider = 'DiffModified',
     condition = checkwidth,
     icon = ' ',
-    highlight = {colors.orange,colors.line_bg},
+    highlight = {colors.blue,colors.line_bg},
   }
 }
 gls.left[9] = {

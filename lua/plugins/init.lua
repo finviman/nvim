@@ -23,17 +23,27 @@ require'compe'.setup {
 	--   vsnip = true;
 	--   ultisnips = true;
 	};
-  }
+}
 
-  require'nvim-treesitter.configs'.setup {
-	highlight = {
-	  enable = true,              -- false will disable the whole extension
-	},
-  }
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+
+require('gitsigns').setup{
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '▌', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+}
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'mhartington/oceanic-next'
+	use 'glepnir/zephyr-nvim'
 	use 'glepnir/galaxyline.nvim'
 	use 'kyazdani42/nvim-web-devicons'
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -41,4 +51,7 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use {'nvim-telescope/telescope.nvim',requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 	use {'kyazdani42/nvim-tree.lua',opt=true,cmd={'NvimTreeToggle','NvimTreeFindFile'}}
+	-- git
+	use 'lewis6991/gitsigns.nvim'
+	use 'folke/which-key.nvim'
 end)
