@@ -39,7 +39,50 @@ require('gitsigns').setup{
     topdelete    = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
+  current_line_blame_delay = 50,
+  current_line_blame_position='eol',
 }
+
+require('telescope').load_extension('fzf')
+local actions = require('telescope.actions')
+require('telescope').setup{
+    defaults = {
+        prompt_prefix = "✎ ",
+        selection_caret = "➳ ",
+        layout_strategy = "horizontal",
+        layout_defaults = {
+            horizontal ={
+                preview_width = 80
+            }
+        },
+        mappings = {
+          i = {
+            ["<esc>"] = actions.close
+          }
+        },
+        shorten_path = true
+    },
+    extensions = {
+    fzf = {
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+    }
+  }
+}
+
+require("toggleterm").setup{}
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
+function _ranger_toggle()
+  ranger:toggle()
+end
+
+require "pears".setup()
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
@@ -50,8 +93,12 @@ return require('packer').startup(function(use)
 	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter"}
 	use 'neovim/nvim-lspconfig'
 	use {'nvim-telescope/telescope.nvim',requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',opt=true,cmd={'NvimTreeToggle','NvimTreeFindFile'}}
-	-- git
-	use 'lewis6991/gitsigns.nvim'
 	use 'folke/which-key.nvim'
+	use 'lewis6991/gitsigns.nvim'
+	use 'sindrets/diffview.nvim'
+	use 'akinsho/nvim-toggleterm.lua'
+	use 'b3nj5m1n/kommentary' 
+  use 'steelsojka/pears.nvim'
 end)
