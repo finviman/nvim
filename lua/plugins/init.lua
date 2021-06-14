@@ -84,6 +84,12 @@ end
 
 require "pears".setup()
 
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
+
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'glepnir/zephyr-nvim'
@@ -92,6 +98,7 @@ return require('packer').startup(function(use)
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter"}
 	use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
 	use {'nvim-telescope/telescope.nvim',requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',opt=true,cmd={'NvimTreeToggle','NvimTreeFindFile'}}
