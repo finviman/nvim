@@ -13,6 +13,7 @@ local function load_options()
       magic          = true;
       virtualedit    = "block";
       encoding       = "utf-8";
+      fileencodings  = "utf-8,cp936,gb18030,utf16le";
       viewoptions    = "folds,cursor,curdir,slash,unix";
       sessionoptions = "curdir,help,tabpages,winsize";
     --   clipboard      = "unnamedplus";

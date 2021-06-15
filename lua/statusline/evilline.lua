@@ -44,21 +44,6 @@ local function lsp_status(status)
 end
 
 
-local function get_coc_lsp()
-  local status = vim.fn['coc#status']()
-  if not status or status == '' then
-      return ''
-  end
-  return lsp_status(status)
-end
-
-function get_diagnostic_info()
-  if vim.fn.exists('*coc#rpc#start_server') == 1 then
-    return get_coc_lsp()
-    end
-  return ''
-end
-
 local function get_current_func()
   local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
   if not has_func then return end
@@ -81,7 +66,6 @@ local function trailing_whitespace()
     end
 end
 
-CocStatus = get_diagnostic_info
 CocFunc = get_current_func
 TrailingWhiteSpace = trailing_whitespace
 
@@ -252,9 +236,9 @@ gls.left[14] = {
 
 gls.left[15] = {
     CocStatus = {
-     provider = CocStatus,
+     provider = 'GetLspClient',
      highlight = {colors.green,colors.bg},
-     icon = '  🗱'
+     icon = '  '
     }
 }
 

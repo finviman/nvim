@@ -92,7 +92,7 @@ end
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
-	use {'glepnir/galaxyline.nvim',config=function () require'statusline.spaceline' end}
+	use {'glepnir/galaxyline.nvim',config=function () require'statusline.evilline' end}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter",config=config_compe}
