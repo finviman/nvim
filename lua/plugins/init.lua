@@ -1,5 +1,5 @@
 vim.cmd [[packadd nvim-tree.lua]]
-vim.cmd [[packadd nvim-compe]]
+local function config_compe()
 require'compe'.setup {
 	enabled = true;
 	autocomplete = true;
@@ -24,6 +24,7 @@ require'compe'.setup {
 	--   ultisnips = true;
 	};
 }
+end
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -82,8 +83,6 @@ function _ranger_toggle()
   ranger:toggle()
 end
 
-require "pears".setup()
-
 require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
@@ -91,21 +90,21 @@ for _, server in pairs(servers) do
 end
 
 return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
-	use 'glepnir/zephyr-nvim'
-	use 'glepnir/galaxyline.nvim'
-	use 'kyazdani42/nvim-web-devicons'
+	use {'wbthomason/packer.nvim'}
+	use {'glepnir/zephyr-nvim'}
+	use {'glepnir/galaxyline.nvim',config=function () require'statusline.spaceline' end}
+	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter"}
-	use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter",config=config_compe}
 	use {'nvim-telescope/telescope.nvim',requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',opt=true,cmd={'NvimTreeToggle','NvimTreeFindFile'}}
-	use 'folke/which-key.nvim'
-	use 'lewis6991/gitsigns.nvim'
-	use 'sindrets/diffview.nvim'
-	use 'akinsho/nvim-toggleterm.lua'
-	use 'b3nj5m1n/kommentary' 
-  use 'steelsojka/pears.nvim'
+	use {'neovim/nvim-lspconfig'}
+  use {'kabouzeid/nvim-lspinstall'}
+	use {'folke/which-key.nvim'}
+	use {'lewis6991/gitsigns.nvim'}
+	use {'sindrets/diffview.nvim'}
+	use {'akinsho/nvim-toggleterm.lua'}
+	use {'b3nj5m1n/kommentary'} 
+  use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
 end)

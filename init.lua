@@ -1,4 +1,3 @@
-require'statusline.evilline'
 require'plugins'
 require'mappings'
 
