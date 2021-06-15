@@ -82,8 +82,10 @@ _G.packer_plugins = {
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
-    loaded = true,
-    path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    config = { "\27LJ\2\n“\4\0\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\14\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\0035\4\f\0=\4\r\3=\3\15\2B\0\2\1K\0\1\0\nsigns\1\0\2\29current_line_blame_delay\0032 current_line_blame_position\beol\17changedelete\1\0\4\ttext\b‚ñå\ahl\19GitSignsChange\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\14topdelete\1\0\4\ttext\b‚ó∫\ahl\19GitSignsDelete\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\vdelete\1\0\4\ttext\b‚ó∫\ahl\19GitSignsDelete\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\vchange\1\0\4\ttext\b‚ñå\ahl\19GitSignsChange\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\badd\1\0\0\1\0\4\ttext\b‚ñå\ahl\16GitSignsAdd\vlinehl\18GitSignsAddLn\nnumhl\18GitSignsAddNr\nsetup\rgitsigns\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
   },
   kommentary = {
     loaded = true,
@@ -91,7 +93,7 @@ _G.packer_plugins = {
   },
   ["nvim-compe"] = {
     after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe.vim" },
-    config = { "\27LJ\2\n®\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\5\tpath\2\rnvim_lua\2\rnvim_lsp\2\tcalc\2\vbuffer\2\1\0\f\19max_abbr_width\3d\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\ndebug\1\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\18documentation\2\19max_menu_width\3d\19max_kind_width\3d\nsetup\ncompe\frequire\0" },
+    config = { "\27LJ\2\n®\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\5\rnvim_lua\2\rnvim_lsp\2\tcalc\2\tpath\2\vbuffer\2\1\0\f\15min_length\3\1\17autocomplete\2\fenabled\2\ndebug\1\19max_abbr_width\3d\19max_menu_width\3d\18documentation\2\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\19max_kind_width\3d\14preselect\venable\nsetup\ncompe\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe"
@@ -136,16 +138,24 @@ _G.packer_plugins = {
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
-    loaded = true,
-    path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    load_after = {
+      ["telescope.nvim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/popup.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
-    loaded = true,
-    path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    after = { "popup.nvim" },
+    commands = { "Telescope" },
+    config = { "\27LJ\2\n«\3\0\0\b\0\22\0 6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\5\0015\3\17\0005\4\6\0005\5\b\0005\6\a\0=\6\t\5=\5\n\0045\5\14\0005\6\f\0009\a\v\0=\a\r\6=\6\15\5=\5\16\4=\4\18\0035\4\20\0005\5\19\0=\5\3\4=\4\21\3B\1\2\1K\0\1\0\15extensions\1\0\0\1\0\3\14case_mode\15smart_case\25override_file_sorter\2\28override_generic_sorter\1\rdefaults\1\0\0\rmappings\6i\1\0\0\n<esc>\1\0\0\nclose\20layout_defaults\15horizontal\1\0\0\1\0\1\18preview_width\3P\1\0\4\17shorten_path\2\20layout_strategy\15horizontal\20selection_caret\t‚û≥ \18prompt_prefix\t‚úé \nsetup\22telescope.actions\bfzf\19load_extension\14telescope\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
   },
   ["which-key.nvim"] = {
     loaded = true,
@@ -170,6 +180,7 @@ time([[Config for pears.nvim]], false)
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeFindFile lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time([[Defining lazy-load commands]], false)
 
@@ -177,6 +188,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
