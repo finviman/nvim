@@ -63,7 +63,8 @@ require('telescope').setup{
             ["<esc>"] = actions.close
           }
         },
-        shorten_path = true
+        shorten_path = true,
+        dynamic_preview_title=true
     },
     extensions = {
     fzf = {
