@@ -107,7 +107,7 @@ return require('packer').startup(function(use)
   use {'kabouzeid/nvim-lspinstall'}
 	use {'folke/which-key.nvim'}
 	use {'lewis6991/gitsigns.nvim',opt=true,event='BufRead',config=config_gitSign}
-	use {'sindrets/diffview.nvim'}
+	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
 	use {'akinsho/nvim-toggleterm.lua'}
 	use {'b3nj5m1n/kommentary'} 
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
