@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
 	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter",config=config_compe}
 	use {'nvim-telescope/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
-	use {'kyazdani42/nvim-tree.lua',opt=true,cmd={'NvimTreeToggle','NvimTreeFindFile'}}
+	use {'kyazdani42/nvim-tree.lua',opt=true}
 	use {'neovim/nvim-lspconfig'}
   use {'kabouzeid/nvim-lspinstall'}
 	use {'folke/which-key.nvim'}
