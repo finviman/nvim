@@ -67,7 +67,7 @@ local wk = require("which-key")
 local function cmd(s)
   return '<cmd>'..s..'<cr>'
 end
-local codeBase = '/Users/liyang/Program/github'
+local codeBase = '/Users/liyang/Program/meituan'
 wk.register({
     q = {cmd('q'),'quit'},
     Q = {cmd('qa!'),'quit-no-save'},
