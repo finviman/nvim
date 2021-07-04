@@ -93,6 +93,8 @@ for _, server in pairs(servers) do
   require'lspconfig'[server].setup{}
 end
 
+vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
+
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}

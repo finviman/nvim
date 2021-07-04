@@ -34,6 +34,7 @@ map('n', '<D-k>','mz:m-2<cr>`z')
 map('v', '<D-j>',":m'>+<cr>`<my`>mzgv`yo`z")
 map('v', '<D-k>',":m'<-2<cr>`>my`<mzgv`yo`z")
 map('n', '<leader>y','"+y')
+map('n', '<leader>w',':w<CR>')
 map('x', '<leader>y','"+y')
 map('n', '<leader>d','"+yydd')
 map('',  '<C-j>','<C-W>j ')
@@ -62,11 +63,11 @@ require("which-key").setup {
   },
 }
 
-
 local wk = require("which-key")
 local function cmd(s)
   return '<cmd>'..s..'<cr>'
 end
+local codeBase = '/Users/liyang/Program/github'
 wk.register({
     q = {cmd('q'),'quit'},
     Q = {cmd('qa!'),'quit-no-save'},
@@ -78,7 +79,7 @@ wk.register({
       s = {cmd('w')                , 'save file'}           ,
       S = {cmd('wa')                , 'save all'}           ,
       t = {cmd('NvimTreeToggle')   , 'neo-tree'}         ,
-      l = {'checktime'        , 'load new change'}     ,
+      l = {cmd('checktime')        , 'load new change'}     ,
       d = {cmd('lua _ranger_toggle()')        , 'ranger'}     ,
     },
 
@@ -129,6 +130,15 @@ wk.register({
       l = {cmd("lua _lazygit_toggle()")                   , 'lazygit'}                 ,
     },
 
+    p = {
+      name= '+Projects' ,
+      f = {cmd('Telescope find_files cwd='..codeBase) , 'files in codebase'}       ,
+      l = {cmd("NvimTreeFindFile"      ) , 'locate file in FileTree'}     ,
+      d = {cmd('Telescope grep_string'                              ) , 'cursor word in project'}  ,
+      D = {cmd('Telescope grep_string cwd='..codeBase ) , 'cursor word in codebase'} ,
+      ['/'] = {cmd('Telescope live_grep cwd='..codeBase) , 'find string in codebase'} ,
+    },
+
     t = {
        name='+Toggle'             ,
        f = {cmd('NvimTreeToggle'),   'File Tree'}             ,
@@ -153,6 +163,23 @@ wk.register({
       r = {cmd('Telescope registers'      ) , 'registers'}       ,
       m = {cmd('Telescope marks'          ) , 'marks'}           ,
       f = {cmd('Telescope filetypes'      ) , 'filetypes'}       ,
-    }
-  }, { prefix = "<Space>" })
+    },
 
+    w = {
+      name= '+Windows' ,
+                   ['_'] = {cmd('<C-W>s')     , 'split-window-below'}  ,
+                   ['|'] = {cmd('<C-W>v')     , 'split-window-right'}  ,
+                   d = {cmd('<C-W>q')     , 'close window'}        ,
+                   h = {cmd('<C-W>h')     , 'window-left'}         ,
+                   j = {cmd('<C-W>j')     , 'window-below'}        ,
+                   l = {cmd('<C-W>l')     , 'window-right'}        ,
+                   k = {cmd('<C-W>k')     , 'window-up'}           ,
+                   H = {cmd('<C-W>8<')    , 'expand-window-left'}  ,
+                   J = {cmd(':resize +5') , 'expand-window-below'} ,
+                   L = {cmd('<C-W>8>')    , 'expand-window-right'} ,
+                   K = {cmd(':resize -5') , 'expand-window-up'}    ,
+                   ['='] = {cmd('<C-W>=')     , 'balance-window'}      ,
+                   ['x'] = {cmd('<C-W>x')     , 'swap 2 windows'}      ,
+                  }
+
+  }, { prefix = "<Space>" })
