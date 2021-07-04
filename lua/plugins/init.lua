@@ -53,7 +53,7 @@ require('telescope').setup{
         prompt_prefix = "✎ ",
         selection_caret = "➳ ",
         layout_strategy = "horizontal",
-        layout_defaults = {
+        layout_config = {
             horizontal ={
                 preview_width = 80
             }
