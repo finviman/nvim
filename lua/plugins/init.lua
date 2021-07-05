@@ -95,10 +95,12 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
+require'statusline.evil_lualine'
+
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
-	use {'glepnir/galaxyline.nvim',config=function () require'statusline.evilline' end}
+	use {'hoob3rt/lualine.nvim'}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
