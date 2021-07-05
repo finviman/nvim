@@ -155,7 +155,7 @@ wk.register({
       name = '+Vim',
       a = {cmd('Telescope commands'       ) , 'action commands'} ,
       t = {cmd('Telescope colorscheme'    ) , 'colorschemes' }   ,
-      e = {cmd('e $MYVIMRC'               ) , 'init.nvim'}    ,
+      e = {cmd('Telescope find_files cwd=~/.config/nvim'               ) , 'init.nvim'}    ,
       S = {cmd('Reload'                   ) , 'load config'}    ,
       s = {cmd('Telescope search_history' ) , 'search history'}  ,
       h = {cmd('Telescope help_tags'      ) , 'help tags'}       ,
