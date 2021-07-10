@@ -95,12 +95,11 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
-require'statusline.evil_lualine'
-
+require'feline'.setup()
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
-	use {'hoob3rt/lualine.nvim'}
+	use {'famiu/feline.nvim'}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

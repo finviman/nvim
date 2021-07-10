@@ -75,8 +75,12 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/diffview.nvim"
   },
+  ["feline.nvim"] = {
+    loaded = true,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/feline.nvim"
+  },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\n“\4\0\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\14\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\0035\4\f\0=\4\r\3=\3\15\2B\0\2\1K\0\1\0\nsigns\1\0\2\29current_line_blame_delay\0032 current_line_blame_position\beol\17changedelete\1\0\4\ttext\b‚ñå\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\14topdelete\1\0\4\ttext\b‚ó∫\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\vdelete\1\0\4\ttext\b‚ó∫\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\vchange\1\0\4\ttext\b‚ñå\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\badd\1\0\0\1\0\4\ttext\b‚ñå\vlinehl\18GitSignsAddLn\nnumhl\18GitSignsAddNr\ahl\16GitSignsAdd\nsetup\rgitsigns\frequire\0" },
+    config = { "\27LJ\2\n“\4\0\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\14\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\0035\4\f\0=\4\r\3=\3\15\2B\0\2\1K\0\1\0\nsigns\1\0\2 current_line_blame_position\beol\29current_line_blame_delay\0032\17changedelete\1\0\4\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\ttext\b‚ñå\vlinehl\21GitSignsChangeLn\14topdelete\1\0\4\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\ttext\b‚ó∫\vlinehl\21GitSignsDeleteLn\vdelete\1\0\4\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\ttext\b‚ó∫\vlinehl\21GitSignsDeleteLn\vchange\1\0\4\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\ttext\b‚ñå\vlinehl\21GitSignsChangeLn\badd\1\0\0\1\0\4\nnumhl\18GitSignsAddNr\ahl\16GitSignsAdd\ttext\b‚ñå\vlinehl\18GitSignsAddLn\nsetup\rgitsigns\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
@@ -85,13 +89,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/kommentary"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/lualine.nvim"
-  },
   ["nvim-compe"] = {
     after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe.vim" },
-    config = { "\27LJ\2\n®\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\5\rnvim_lsp\2\tcalc\2\tpath\2\vbuffer\2\rnvim_lua\2\1\0\f\19max_menu_width\3d\ndebug\1\19max_kind_width\3d\19max_abbr_width\3d\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\18documentation\2\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\nsetup\ncompe\frequire\0" },
+    config = { "\27LJ\2\n®\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\5\rnvim_lsp\2\vbuffer\2\rnvim_lua\2\tpath\2\tcalc\2\1\0\f\18documentation\2\19max_menu_width\3d\19max_kind_width\3d\19max_abbr_width\3d\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\fenabled\2\14preselect\venable\15min_length\3\1\17autocomplete\2\ndebug\1\nsetup\ncompe\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe"
@@ -149,7 +149,7 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     after = { "popup.nvim" },
     commands = { "Telescope" },
-    config = { "\27LJ\2\n‹\3\0\0\b\0\22\0 6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\5\0015\3\17\0005\4\6\0005\5\b\0005\6\a\0=\6\t\5=\5\n\0045\5\14\0005\6\f\0009\a\v\0=\a\r\6=\6\15\5=\5\16\4=\4\18\0035\4\20\0005\5\19\0=\5\3\4=\4\21\3B\1\2\1K\0\1\0\15extensions\1\0\0\1\0\3\25override_file_sorter\2\28override_generic_sorter\1\14case_mode\15smart_case\rdefaults\1\0\0\rmappings\6i\1\0\0\n<esc>\1\0\0\nclose\18layout_config\15horizontal\1\0\0\1\0\1\18preview_width\3P\1\0\5\17shorten_path\2\20layout_strategy\15horizontal\20selection_caret\t‚û≥ \26dynamic_preview_title\2\18prompt_prefix\t‚úé \nsetup\22telescope.actions\bfzf\19load_extension\14telescope\frequire\0" },
+    config = { "\27LJ\2\n‹\3\0\0\b\0\22\0 6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\5\0015\3\17\0005\4\6\0005\5\b\0005\6\a\0=\6\t\5=\5\n\0045\5\14\0005\6\f\0009\a\v\0=\a\r\6=\6\15\5=\5\16\4=\4\18\0035\4\20\0005\5\19\0=\5\3\4=\4\21\3B\1\2\1K\0\1\0\15extensions\1\0\0\1\0\3\25override_file_sorter\2\28override_generic_sorter\1\14case_mode\15smart_case\rdefaults\1\0\0\rmappings\6i\1\0\0\n<esc>\1\0\0\nclose\18layout_config\15horizontal\1\0\0\1\0\1\18preview_width\3P\1\0\5\20layout_strategy\15horizontal\26dynamic_preview_title\2\20selection_caret\t‚û≥ \17shorten_path\2\18prompt_prefix\t‚úé \nsetup\22telescope.actions\bfzf\19load_extension\14telescope\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
