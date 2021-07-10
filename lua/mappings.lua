@@ -115,7 +115,7 @@ wk.register({
       a = {':Git add %'                 , 'git stage current'}       ,
       A = {':Git add .'                 , 'git stage all'}           ,
       o = {cmd('Telescope git_branches')    , 'git branch list'}         ,
-      s = {cmd('lua neogit.open({ kind = "split" })')                        , 'git status'}              ,
+      s = {cmd('Telescope git_status')                        , 'git status'}              ,
       c = {':Git commit'                , 'git commit'}              ,
       P = {':Git --no-pager push'       , 'git push to remote'}      ,
       p = {':Git pull'                  , 'git pull'}                ,
