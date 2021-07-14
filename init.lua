@@ -76,7 +76,7 @@ local function load_options()
       pumblend       = 10;
       winblend       = 10;
     }
-  
+
     local bw_local  = {
       undofile       = true;
       synmaxcol      = 2500;
@@ -97,7 +97,7 @@ local function load_options()
       conceallevel   = 0;
       concealcursor  = "niv";
     }
-  
+
     vim.g.python3_host_prog = '/usr/local/bin/python3'
     for name, value in pairs(global_local) do
       vim.o[name] = value
@@ -110,5 +110,5 @@ local function load_options()
         end
     end
 end
-  
+
 load_options()

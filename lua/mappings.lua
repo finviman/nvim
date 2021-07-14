@@ -94,7 +94,7 @@ wk.register({
     },
 
     c = {
-        name='+Code',
+       name='+Code',
        a = {cmd('Telescope lsp_code_actions'          )      , 'code action'}     ,
        d = {cmd('Telescope lsp_definitions')      , 'to definition'}     ,
        r = {cmd('Telescope lsp_references'                ), 'to reference'}      ,
@@ -168,19 +168,19 @@ wk.register({
 
     w = {
       name= '+Windows' ,
-                   ['_'] = {'<C-W>s'     , 'split-window-below'}  ,
-                   ['|'] = {'<C-W>v'     , 'split-window-right'}  ,
-                   d = {'<C-W>q'     , 'close window'}        ,
-                   h = {'<C-W>h'     , 'window-left'}         ,
-                   j = {'<C-W>j'     , 'window-below'}        ,
-                   l = {'<C-W>l'     , 'window-right'}        ,
-                   k = {'<C-W>k'     , 'window-up'}           ,
-                   H = {'<C-W>8<'    , 'expand-window-left'}  ,
-                   J = {cmd('resize +5') , 'expand-window-below'} ,
-                   L = {'<C-W>8>'    , 'expand-window-right'} ,
-                   K = {cmd('resize -5') , 'expand-window-up'}    ,
-                   ['='] = {'<C-W>='     , 'balance-window'}      ,
-                   ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
-                  }
+      ['_'] = {'<C-W>s'     , 'split-window-below'}  ,
+      ['|'] = {'<C-W>v'     , 'split-window-right'}  ,
+      d = {'<C-W>q'     , 'close window'}        ,
+      h = {'<C-W>h'     , 'window-left'}         ,
+      j = {'<C-W>j'     , 'window-below'}        ,
+      l = {'<C-W>l'     , 'window-right'}        ,
+      k = {'<C-W>k'     , 'window-up'}           ,
+      H = {'<C-W>8<'    , 'expand-window-left'}  ,
+      J = {cmd('resize +5') , 'expand-window-below'} ,
+      L = {'<C-W>8>'    , 'expand-window-right'} ,
+      K = {cmd('resize -5') , 'expand-window-up'}    ,
+      ['='] = {'<C-W>='     , 'balance-window'}      ,
+      ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
+    }
 
   }, { prefix = "<Space>" })
