@@ -95,15 +95,15 @@ wk.register({
 
     c = {
         name='+Code',
-       a = {cmd('lua vim.lsp.buf.code_action()'          )      , 'code action'}     ,
-       d = {cmd('lua vim.lsp.buf.definition()'          )      , 'to definition'}     ,
-       r = {cmd('lua vim.lsp.buf.references()'                ), 'to reference'}      ,
+       a = {cmd('Telescope lsp_code_actions'          )      , 'code action'}     ,
+       d = {cmd('Telescope lsp_definitions')      , 'to definition'}     ,
+       r = {cmd('Telescope lsp_references'                ), 'to reference'}      ,
        f = {cmd('lua vim.lsp.buf.formatting()'                    ), 'format code'}       ,
        ['['] = {cmd('lua vim.lsp.diagnostic.goto_prev()')            , 'pre diagnostics'}   ,
        [']'] = {cmd('lua vim.lsp.diagnostic.goto_next()')           , 'next diagnostics'}  ,
        R = {':call RunProgram()'                     , 'Run!'}              ,
        t = {cmd('Telescope treesitter')                  , 'tag list'}          ,
-       i = {cmd('lua vim.lsp.buf.implementation()'      )       , 'to implementation'} ,
+       i = {cmd('Telescope lsp_implementations'      )       , 'to implementation'} ,
        z = {cmd(':call ToggleFold()'                    ) , 'fold/unfold code'}  ,
        h = {cmd('lua vim.lsp.buf.hover()'               ) , 'code doc'}          ,
        l = {cmd('Telescope loclist'                    ) , 'location list'}     ,
@@ -149,6 +149,7 @@ wk.register({
        z = {cmd('Limelight!!'          ), 'zen mode'}         ,
        w = {cmd('set wrap!'            ), 'line wrap'}        ,
        l = {cmd('set list!'            ), 'nonvisual char'}   ,
+       t = {cmd('SymbolsOutline'            ), 'SymbolsOutline'}   ,
     },
 
     v = {
@@ -167,19 +168,19 @@ wk.register({
 
     w = {
       name= '+Windows' ,
-                   ['_'] = {cmd('<C-W>s')     , 'split-window-below'}  ,
-                   ['|'] = {cmd('<C-W>v')     , 'split-window-right'}  ,
-                   d = {cmd('<C-W>q')     , 'close window'}        ,
-                   h = {cmd('<C-W>h')     , 'window-left'}         ,
-                   j = {cmd('<C-W>j')     , 'window-below'}        ,
-                   l = {cmd('<C-W>l')     , 'window-right'}        ,
-                   k = {cmd('<C-W>k')     , 'window-up'}           ,
-                   H = {cmd('<C-W>8<')    , 'expand-window-left'}  ,
-                   J = {cmd(':resize +5') , 'expand-window-below'} ,
-                   L = {cmd('<C-W>8>')    , 'expand-window-right'} ,
-                   K = {cmd(':resize -5') , 'expand-window-up'}    ,
-                   ['='] = {cmd('<C-W>=')     , 'balance-window'}      ,
-                   ['x'] = {cmd('<C-W>x')     , 'swap 2 windows'}      ,
+                   ['_'] = {'<C-W>s'     , 'split-window-below'}  ,
+                   ['|'] = {'<C-W>v'     , 'split-window-right'}  ,
+                   d = {'<C-W>q'     , 'close window'}        ,
+                   h = {'<C-W>h'     , 'window-left'}         ,
+                   j = {'<C-W>j'     , 'window-below'}        ,
+                   l = {'<C-W>l'     , 'window-right'}        ,
+                   k = {'<C-W>k'     , 'window-up'}           ,
+                   H = {'<C-W>8<'    , 'expand-window-left'}  ,
+                   J = {cmd('resize +5') , 'expand-window-below'} ,
+                   L = {'<C-W>8>'    , 'expand-window-right'} ,
+                   K = {cmd('resize -5') , 'expand-window-up'}    ,
+                   ['='] = {'<C-W>='     , 'balance-window'}      ,
+                   ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
                   }
 
   }, { prefix = "<Space>" })
