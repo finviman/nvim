@@ -115,4 +115,9 @@ return require('packer').startup(function(use)
 	use {'akinsho/nvim-toggleterm.lua'}
 	use {'b3nj5m1n/kommentary'} 
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
+  use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end}
 end)

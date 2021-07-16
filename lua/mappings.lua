@@ -90,7 +90,7 @@ wk.register({
        D = {cmd('Bclose'                    ) , 'kill-other-buffers'} ,
        [']'] = {cmd('bnext'                     ) , 'next-buffer'}        ,
        ['['] = {cmd('bprevious'                 ) , 'previous-buffer'}    ,
-       s = {cmd('<Plug>(easymotion-prefix)s') , 'easy motion'}        ,
+       s = {cmd('HopChar1') , 'easy motion'}        ,
     },
 
     c = {
