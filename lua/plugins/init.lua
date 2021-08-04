@@ -62,7 +62,11 @@ require('telescope').setup{
             ["<esc>"] = actions.close
           }
         },
-        shorten_path = true,
+      path_display = {
+        "shorten",
+        "absolute",
+        },
+
         dynamic_preview_title=true
     },
     extensions = {
@@ -94,7 +98,7 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
-require'feline'.setup()
+require'statusline.statusline'
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}

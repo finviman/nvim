@@ -74,8 +74,8 @@ wk.register({
 
     f = {
       name = '+Files',
-      f = {cmd('Telescope find_files shorten_path=true')      , 'project file list'}   ,
-      r = {cmd('Telescope oldfiles shorten_path=true')       , 'history files'} ,
+      f = {cmd('Telescope find_files')      , 'project file list'}   ,
+      r = {cmd('Telescope oldfiles')       , 'history files'} ,
       s = {cmd('w')                , 'save file'}           ,
       S = {cmd('wa')                , 'save all'}           ,
       t = {cmd('NvimTreeToggle')   , 'neo-tree'}         ,
@@ -85,7 +85,7 @@ wk.register({
 
     b = {
        name='+Buffer'                  ,
-       b = {cmd('Telescope buffers shorten_path=true')              , 'buffer list'}        ,
+       b = {cmd('Telescope buffers')              , 'buffer list'}        ,
        d = {cmd('bp|bd #'                  ) , 'kill-buffer'}        ,
        D = {cmd('Bclose'                    ) , 'kill-other-buffers'} ,
        [']'] = {cmd('bnext'                     ) , 'next-buffer'}        ,
@@ -124,7 +124,7 @@ wk.register({
       r = {cmd('lua require"gitsigns".reset_hunk()')          , 'revert current change'}   ,
       d = {cmd('DiffviewOpen')                , 'git diff --cached'}       ,
       w = {'Gbrowse'                    , 'browse remote host file'} ,
-      ['/'] = {cmd('Telescope live_grep shorten_path=true')       , 'search in git files'}     ,
+      ['/'] = {cmd('Telescope live_grep')       , 'search in git files'}     ,
       ['<'] = {cmd('diffget')                   , 'diffget'}                 ,
       ['>'] = {cmd('diffput')                  , 'diffput'}                 ,
       l = {cmd("lua _lazygit_toggle()")                   , 'lazygit'}                 ,
