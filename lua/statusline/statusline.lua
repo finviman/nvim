@@ -109,8 +109,9 @@ local comps = {
             provider = 'file_info',
             hl = {
                 fg = colors.blue,
-                style = 'bold'
-            }
+                style = 'bold',
+            },
+            file_modified_icon = 'פֿ'
         },
         encoding = {
             provider = 'file_encoding',
