@@ -113,6 +113,7 @@ return require('packer').startup(function(use)
 	use {'neovim/nvim-lspconfig'}
   use {'kabouzeid/nvim-lspinstall'}
 	use {'folke/which-key.nvim'}
+	use {'laishulu/vim-macos-ime'}
 	use {'lewis6991/gitsigns.nvim',opt=true,event='BufRead',config=config_gitSign}
 	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
 	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline'}
