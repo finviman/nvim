@@ -69,6 +69,33 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cmp-buffer"] = {
+    after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/cmp-path"
+  },
   ["diffview.nvim"] = {
     commands = { "DiffviewOpen" },
     loaded = false,
@@ -80,7 +107,7 @@ _G.packer_plugins = {
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/feline.nvim"
   },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\nÒ\4\0\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\14\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\0035\4\f\0=\4\r\3=\3\15\2B\0\2\1K\0\1\0\nsigns\1\0\2 current_line_blame_position\beol\29current_line_blame_delay\0032\17changedelete\1\0\4\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\ttext\bâ–Œ\vlinehl\21GitSignsChangeLn\14topdelete\1\0\4\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\ttext\bâ—º\vlinehl\21GitSignsDeleteLn\vdelete\1\0\4\nnumhl\21GitSignsDeleteNr\ahl\19GitSignsDelete\ttext\bâ—º\vlinehl\21GitSignsDeleteLn\vchange\1\0\4\nnumhl\21GitSignsChangeNr\ahl\19GitSignsChange\ttext\bâ–Œ\vlinehl\21GitSignsChangeLn\badd\1\0\0\1\0\4\nnumhl\18GitSignsAddNr\ahl\16GitSignsAdd\ttext\bâ–Œ\vlinehl\18GitSignsAddLn\nsetup\rgitsigns\frequire\0" },
+    config = { "\27LJ\2\nÒ\4\0\0\5\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\14\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\0035\4\f\0=\4\r\3=\3\15\2B\0\2\1K\0\1\0\nsigns\1\0\2\29current_line_blame_delay\0032 current_line_blame_position\beol\17changedelete\1\0\4\ahl\19GitSignsChange\ttext\bâ–Œ\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\14topdelete\1\0\4\ahl\19GitSignsDelete\ttext\bâ—º\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\vdelete\1\0\4\ahl\19GitSignsDelete\ttext\bâ—º\vlinehl\21GitSignsDeleteLn\nnumhl\21GitSignsDeleteNr\vchange\1\0\4\ahl\19GitSignsChange\ttext\bâ–Œ\vlinehl\21GitSignsChangeLn\nnumhl\21GitSignsChangeNr\badd\1\0\0\1\0\4\ahl\16GitSignsAdd\ttext\bâ–Œ\vlinehl\18GitSignsAddLn\nnumhl\18GitSignsAddNr\nsetup\rgitsigns\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
@@ -96,12 +123,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/start/kommentary"
   },
-  ["nvim-compe"] = {
-    after_files = { "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe.vim" },
-    config = { "\27LJ\2\n¨\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\5\tcalc\2\tpath\2\rnvim_lua\2\rnvim_lsp\2\vbuffer\2\1\0\f\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\ndebug\1\18documentation\2\19max_menu_width\3d\19max_kind_width\3d\19max_abbr_width\3d\21incomplete_delay\3\3\19source_timeout\3È\1\18throttle_time\3P\nsetup\ncompe\frequire\0" },
+  ["nvim-cmp"] = {
+    after = { "cmp-buffer", "cmp-path", "cmp-nvim-lsp" },
+    config = { "\27LJ\2\n;\0\1\4\0\4\0\0066\1\0\0009\1\1\0019\1\2\0019\3\3\0B\1\2\1K\0\1\0\tbody\20vsnip#anonymous\afn\bvimð\1\1\0\b\0\17\0\0266\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\0035\4\v\0009\5\b\0009\5\t\0055\a\n\0B\5\2\2=\5\f\4=\4\b\0034\4\4\0005\5\r\0>\5\1\0045\5\14\0>\5\2\0045\5\15\0>\5\3\4=\4\16\3B\1\2\1K\0\1\0\fsources\1\0\1\tname\rnvim_lsp\1\0\1\tname\tpath\1\0\1\tname\vbuffer\n<C-y>\1\0\0\1\0\1\vselect\2\fconfirm\fmapping\fsnippet\1\0\0\vexpand\1\0\0\0\nsetup\bcmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-compe"
+    path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -162,9 +189,9 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     after = { "popup.nvim" },
     commands = { "Telescope" },
-    config = { "\27LJ\2\nø\3\0\0\b\0\24\0\"6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\5\0015\3\19\0005\4\6\0005\5\b\0005\6\a\0=\6\t\5=\5\n\0045\5\14\0005\6\f\0009\a\v\0=\a\r\6=\6\15\5=\5\16\0045\5\17\0=\5\18\4=\4\20\0035\4\22\0005\5\21\0=\5\3\4=\4\23\3B\1\2\1K\0\1\0\15extensions\1\0\0\1\0\3\25override_file_sorter\2\28override_generic_sorter\1\14case_mode\15smart_case\rdefaults\1\0\0\17path_display\1\3\0\0\fshorten\rabsolute\rmappings\6i\1\0\0\n<esc>\1\0\0\nclose\18layout_config\15horizontal\1\0\0\1\0\1\18preview_width\3P\1\0\4\20layout_strategy\15horizontal\20selection_caret\tâž³ \18prompt_prefix\tâœŽ \26dynamic_preview_title\2\nsetup\22telescope.actions\bfzf\19load_extension\14telescope\frequire\0" },
+    config = { "\27LJ\2\nø\3\0\0\b\0\24\0\"6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\5\0015\3\19\0005\4\6\0005\5\b\0005\6\a\0=\6\t\5=\5\n\0045\5\14\0005\6\f\0009\a\v\0=\a\r\6=\6\15\5=\5\16\0045\5\17\0=\5\18\4=\4\20\0035\4\22\0005\5\21\0=\5\3\4=\4\23\3B\1\2\1K\0\1\0\15extensions\1\0\0\1\0\3\14case_mode\15smart_case\25override_file_sorter\2\28override_generic_sorter\1\rdefaults\1\0\0\17path_display\1\3\0\0\fshorten\rabsolute\rmappings\6i\1\0\0\n<esc>\1\0\0\nclose\18layout_config\15horizontal\1\0\0\1\0\1\18preview_width\3P\1\0\4\26dynamic_preview_title\2\20layout_strategy\15horizontal\20selection_caret\tâž³ \18prompt_prefix\tâœŽ \nsetup\22telescope.actions\bfzf\19load_extension\14telescope\frequire\0" },
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/Users/liyang/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
   },
   ["vim-macos-ime"] = {
@@ -189,18 +216,18 @@ time([[Config for pears.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SymbolsOutline lua require("packer.load")({'symbols-outline.nvim'}, { cmd = "SymbolsOutline", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DiffviewOpen lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SymbolsOutline lua require("packer.load")({'symbols-outline.nvim'}, { cmd = "SymbolsOutline", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

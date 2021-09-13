@@ -1,28 +1,21 @@
 vim.cmd [[packadd nvim-tree.lua]]
-local function config_compe()
-require'compe'.setup {
-	enabled = true;
-	autocomplete = true;
-	debug = false;
-	min_length = 1;
-	preselect = 'enable';
-	throttle_time = 80;
-	source_timeout = 200;
-	incomplete_delay = 400;
-	max_abbr_width = 100;
-	max_kind_width = 100;
-	max_menu_width = 100;
-	documentation = true;
-	source = {
-	  path = true;
-	  buffer = true;
-	  calc = true;
-	  nvim_lsp = true;
-	  nvim_lua = true;
-	--   vsnip = true;
-	--   ultisnips = true;
-	};
-}
+function config_cmp()
+local cmp = require'cmp'
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'buffer' },
+      { name = 'path' },
+      { name = 'nvim_lsp' }
+    }
+  })
 end
 
 require'nvim-treesitter.configs'.setup {
@@ -98,7 +91,7 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
-require'statusline.statusline'
+require('feline').setup()
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
@@ -106,7 +99,15 @@ return require('packer').startup(function(use)
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use {'hrsh7th/nvim-compe',opt=true,event="InsertEnter",config=config_compe}
+  use {'hrsh7th/nvim-cmp',
+    opt=true,event="InsertEnter",
+    config=config_cmp,
+    requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lsp"
+    }
+  }
 	use {'nvim-telescope/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',opt=true}
