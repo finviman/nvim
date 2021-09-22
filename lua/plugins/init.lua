@@ -111,7 +111,7 @@ return require('packer').startup(function(use)
         "hrsh7th/cmp-nvim-lsp"
     }
   }
-	use {'nvim-telescope/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
+	use {'FinallyFinancialFreedom/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',opt=true}
 	use {'neovim/nvim-lspconfig'}
@@ -122,7 +122,7 @@ return require('packer').startup(function(use)
 	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
 	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline'}
 	use {'akinsho/nvim-toggleterm.lua'}
-	use {'b3nj5m1n/kommentary'} 
+	use {'b3nj5m1n/kommentary'}
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
   config = function()
