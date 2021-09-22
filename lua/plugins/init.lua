@@ -32,8 +32,11 @@ require('gitsigns').setup{
     topdelete    = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  current_line_blame_delay = 50,
-  current_line_blame_position='eol',
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 300,
+  }
 }
 end
 
@@ -123,7 +126,6 @@ return require('packer').startup(function(use)
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
   config = function()
-    -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end}
 end)
