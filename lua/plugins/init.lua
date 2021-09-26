@@ -18,6 +18,7 @@ local cmp = require'cmp'
   })
 end
 
+require('impatient')
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -95,6 +96,7 @@ end
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
 require('feline').setup()
+-- require('packer_compiled')
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
@@ -124,6 +126,10 @@ return require('packer').startup(function(use)
 	use {'akinsho/nvim-toggleterm.lua'}
 	use {'b3nj5m1n/kommentary'}
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
+  use {'lewis6991/impatient.nvim',config = {
+    compile_path = '~/.config/nvim/lua/plugin/packer_compiled.lua'
+  }
+  }
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
   config = function()
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
