@@ -95,7 +95,7 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 
-require('feline').setup()
+require'statusline.feline'
 -- require('packer_compiled')
 return require('packer').startup(function(use)
 	use {'wbthomason/packer.nvim'}
