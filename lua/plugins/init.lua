@@ -94,7 +94,8 @@ for _, server in pairs(servers) do
 end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
-
+vim.g.nvim_tree_respect_buf_cwd = 1
+require('commented').setup()
 require'statusline.feline'
 -- require('packer_compiled')
 return require('packer').startup(function(use)
@@ -124,14 +125,25 @@ return require('packer').startup(function(use)
 	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
 	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline'}
 	use {'akinsho/nvim-toggleterm.lua'}
-	use {'b3nj5m1n/kommentary'}
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
-  use {'lewis6991/impatient.nvim',config = {
-    compile_path = '~/.config/nvim/lua/plugin/packer_compiled.lua'
-  }
+  use {'lewis6991/impatient.nvim',
+    config = {
+        compile_path = '~/.config/nvim/lua/plugin/packer_compiled.lua'
+    }
   }
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
-  config = function()
+    config = function()
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end}
+  use{'winston0410/commented.nvim',
+    config = function() require('commented').setup({
+          keybindings = {n = "gc", v = "gc", nl = "gcc"},
+    }) end
+  }
+  use {"ahmedkhalf/project.nvim",
+  config = function()
+    require("project_nvim").setup {
+    }
+  end
+}
 end)
