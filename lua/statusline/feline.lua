@@ -4,7 +4,7 @@ if not pcall(require, "feline") then
 end
 
 local colors = {
-    bg = '#282c34',
+    bg = '#493a63',
     fg = '#abb2bf',
     yellow = '#e0af68',
     cyan = '#56b6c2',
@@ -61,7 +61,7 @@ local comps = {
     vi_mode = {
         left = {
             provider = function()
-              return '  ' .. vi_mode_utils.get_vim_mode()
+              return '  ' .. vi_mode_utils.get_vim_mode()
             end,
             hl = function()
                 local val = {
