@@ -95,7 +95,6 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 vim.g.nvim_tree_respect_buf_cwd = 1
-require('commented').setup()
 require'statusline.feline'
 -- require('packer_compiled')
 return require('packer').startup(function(use)
