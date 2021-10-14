@@ -19,11 +19,6 @@ local cmp = require'cmp'
 end
 
 require('impatient')
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
 local function config_gitSign()
 require('gitsigns').setup{
   signs = {
@@ -76,14 +71,14 @@ require('telescope').setup{
 }
 end
 
-require("toggleterm").setup{}
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
 function _lazygit_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
   lazygit:toggle()
 end
-local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
 function _ranger_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
   ranger:toggle()
 end
 
@@ -103,7 +98,15 @@ return require('packer').startup(function(use)
 	use {'famiu/feline.nvim'}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
-	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+      highlight = {
+        enable = true,              -- false will disable the whole extension
+      },
+    }
+  end
+  }
   use {'hrsh7th/nvim-cmp',
     opt=true,event="InsertEnter",
     config=config_cmp,
@@ -123,7 +126,11 @@ return require('packer').startup(function(use)
 	use {'lewis6991/gitsigns.nvim',opt=true,event='BufRead',config=config_gitSign}
 	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
 	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline'}
-	use {'akinsho/nvim-toggleterm.lua'}
+	use {'akinsho/nvim-toggleterm.lua',
+    config = function()
+      require("toggleterm").setup{}
+    end
+  }
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
   use {'lewis6991/impatient.nvim',
     config = {
@@ -133,7 +140,8 @@ return require('packer').startup(function(use)
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
     config = function()
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end}
+    end
+  }
   use{'winston0410/commented.nvim',
     config = function() require('commented').setup({
           keybindings = {n = "gc", v = "gc", nl = "gcc"},
@@ -141,8 +149,7 @@ return require('packer').startup(function(use)
   }
   use {"ahmedkhalf/project.nvim",
   config = function()
-    require("project_nvim").setup {
-    }
+    require("project_nvim").setup{}
   end
 }
 end)
