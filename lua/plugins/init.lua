@@ -1,4 +1,3 @@
-vim.cmd [[packadd nvim-tree.lua]]
 function config_cmp()
 local cmp = require'cmp'
   cmp.setup({
@@ -19,6 +18,7 @@ local cmp = require'cmp'
 end
 
 require('impatient')
+require('packer_compiled')
 local function config_gitSign()
 require('gitsigns').setup{
   signs = {
@@ -90,9 +90,10 @@ end
 
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 vim.g.nvim_tree_respect_buf_cwd = 1
+-- must before statusline config
+vim.opt.termguicolors = true
 require'statusline.feline'
--- require('packer_compiled')
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
 	use {'famiu/feline.nvim'}
@@ -118,7 +119,7 @@ return require('packer').startup(function(use)
   }
 	use {'FinallyFinancialFreedom/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
-	use {'kyazdani42/nvim-tree.lua',opt=true}
+	use {'kyazdani42/nvim-tree.lua',config = function() require'nvim-tree'.setup {} end}
 	use {'neovim/nvim-lspconfig'}
   use {'kabouzeid/nvim-lspinstall'}
 	use {'folke/which-key.nvim'}
@@ -132,11 +133,7 @@ return require('packer').startup(function(use)
     end
   }
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
-  use {'lewis6991/impatient.nvim',
-    config = {
-        compile_path = '~/.config/nvim/lua/plugin/packer_compiled.lua'
-    }
-  }
+  use {'lewis6991/impatient.nvim'}
   use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
     config = function()
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
@@ -152,4 +149,8 @@ return require('packer').startup(function(use)
     require("project_nvim").setup{}
   end
 }
-end)
+end,
+config = {
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  }
+})
