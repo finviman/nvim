@@ -119,7 +119,9 @@ return require('packer').startup({function(use)
   }
 	use {'FinallyFinancialFreedom/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
-	use {'kyazdani42/nvim-tree.lua',config = function() require'nvim-tree'.setup {} end}
+	use {'kyazdani42/nvim-tree.lua',
+    config = function() require'nvim-tree'.setup {} end,
+    opt=true,cmd={'NvimTreeFindFile','NvimTreeToggle'}}
 	use {'neovim/nvim-lspconfig'}
   use {'kabouzeid/nvim-lspinstall'}
 	use {'folke/which-key.nvim'}
