@@ -89,8 +89,12 @@ local comps = {
     },
     file = {
         info = {
-            provider = 'file_info',
-            file_modified_icon = '',
+            provider = {
+                name='file_info',
+                opts = {
+                    file_modified_icon = '',
+                },
+            },
             hl = {
                 fg = colors.blue,
                 style = 'bold'
