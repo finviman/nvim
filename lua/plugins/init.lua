@@ -36,6 +36,14 @@ require('gitsigns').setup{
 }
 end
 
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
+
 local function config_tele()
 require('telescope').load_extension('fzf')
 local actions = require('telescope.actions')
@@ -82,12 +90,6 @@ function _ranger_toggle()
   ranger:toggle()
 end
 
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
-end
-
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
 vim.g.nvim_tree_respect_buf_cwd = 1
 -- must before statusline config
@@ -123,7 +125,7 @@ return require('packer').startup({function(use)
     config = function() require'nvim-tree'.setup {} end,
     opt=true,cmd={'NvimTreeFindFile','NvimTreeToggle'}}
 	use {'neovim/nvim-lspconfig'}
-  use {'kabouzeid/nvim-lspinstall'}
+  use {'williamboman/nvim-lsp-installer'}
 	use {'folke/which-key.nvim'}
 	use {'laishulu/vim-macos-ime'}
 	use {'lewis6991/gitsigns.nvim',opt=true,event='BufRead',config=config_gitSign}
