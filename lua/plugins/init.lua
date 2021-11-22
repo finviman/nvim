@@ -46,6 +46,7 @@ end)
 
 local function config_tele()
 require('telescope').load_extension('fzf')
+local action_layout = require('telescope.actions.layout')
 local actions = require('telescope.actions')
 require('telescope').setup{
     defaults = {
@@ -59,7 +60,8 @@ require('telescope').setup{
         },
         mappings = {
           i = {
-            ["<esc>"] = actions.close
+            ["<esc>"] = actions.close,
+            ["<C-k>"] = action_layout.toggle_preview
           }
         },
       path_display = {
