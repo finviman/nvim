@@ -119,7 +119,7 @@ return require('packer').startup({function(use)
         "hrsh7th/cmp-nvim-lsp"
     }
   }
-	use {'FinallyFinancialFreedom/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = {'nvim-lua/popup.nvim'}}
+	use {'FinallyFinancialFreedom/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = { {'nvim-lua/plenary.nvim'} }}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',
     config = function() require'nvim-tree'.setup {} end,
