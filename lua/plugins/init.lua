@@ -1,21 +1,27 @@
-function config_cmp()
 local cmp = require'cmp'
-  cmp.setup({
-    snippet = {
+cmp.setup({
+  snippet = {
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
       end,
-    },
-    mapping = {
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
+  },
+  window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+  }),
+  sources = {
       { name = 'buffer' },
       { name = 'path' },
       { name = 'nvim_lsp' }
-    }
-  })
-end
+  }
+})
 
 require('impatient')
 require('packer_compiled')
@@ -113,8 +119,6 @@ return require('packer').startup({function(use)
   end
   }
   use {'hrsh7th/nvim-cmp',
-    opt=true,event="InsertEnter",
-    config=config_cmp,
     requires = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
