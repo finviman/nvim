@@ -96,11 +96,11 @@ vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','
 vim.g.nvim_tree_respect_buf_cwd = 1
 -- must before statusline config
 vim.opt.termguicolors = true
-require'statusline.evil_lualine'
+require('feline').setup()
 return require('packer').startup({function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
-	use {'nvim-lualine/lualine.nvim'}
+	use {'feline-nvim/feline.nvim'}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
