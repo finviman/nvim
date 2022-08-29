@@ -98,8 +98,6 @@ function _ranger_toggle()
   ranger:toggle()
 end
 
-vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
-vim.g.nvim_tree_respect_buf_cwd = 1
 -- must before statusline config
 vim.opt.termguicolors = true
 require('feline').setup()
@@ -128,7 +126,23 @@ return require('packer').startup({function(use)
 	use {'nvim-telescope/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = { {'nvim-lua/plenary.nvim'} }}
 	use {'nvim-telescope/telescope-fzf-native.nvim',run = 'make'}
 	use {'kyazdani42/nvim-tree.lua',
-    config = function() require'nvim-tree'.setup {} end,
+    config = function() 
+    require'nvim-tree'.setup {
+        respect_buf_cwd= true,
+        filters = {
+            custom = {'.git', 'node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
+        },
+        view = {
+            mappings = {
+                list = {
+                    {key="C",action="cd"},
+                    {key="O",action="expand_all"},
+                    {key="o",action="preview"},
+                }
+            }
+        },
+        on_attach = "disabled"
+    } end,
     opt=true,cmd={'NvimTreeFindFile','NvimTreeToggle'}}
 	use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
