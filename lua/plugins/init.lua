@@ -100,11 +100,12 @@ end
 
 -- must before statusline config
 vim.opt.termguicolors = true
-require('feline').setup()
+require('zephyr') --speed colorscheme
+require('statusline.evil_lualine')
 return require('packer').startup({function(use)
 	use {'wbthomason/packer.nvim'}
 	use {'glepnir/zephyr-nvim'}
-	use {'feline-nvim/feline.nvim'}
+	use {'nvim-lualine/lualine.nvim'}
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'nvim-lua/plenary.nvim'}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',

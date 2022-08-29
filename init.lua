@@ -1,7 +1,6 @@
 require'plugins'
 require'mappings'
 
-require('zephyr') --speed colorscheme
 local function load_options()
     local global_local = {
       termguicolors  = true;
