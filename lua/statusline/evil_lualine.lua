@@ -130,6 +130,12 @@ ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = 'bold' },
+  symbols ={
+    modified = '',
+    readonly = '',
+    unnamed = '[No Name]',
+    newfile = '[New]',  
+  }
 }
 
 ins_left { 'location' }
@@ -187,7 +193,7 @@ ins_right {
 ins_right {
   'fileformat',
   fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
   color = { fg = colors.green, gui = 'bold' },
 }
 
