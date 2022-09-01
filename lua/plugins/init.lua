@@ -142,7 +142,8 @@ return require('packer').startup({function(use)
                 }
             }
         },
-        on_attach = "disabled"
+        on_attach = "disabled",
+        remove_keymaps = {"<C-e>"}
     } end,
     opt=true,cmd={'NvimTreeFindFile','NvimTreeToggle'}}
 	use {'neovim/nvim-lspconfig'}
