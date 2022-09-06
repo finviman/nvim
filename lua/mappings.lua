@@ -7,6 +7,7 @@ end
 vim.g.mapleader = ','
 vim.api.nvim_set_keymap('n',' ','',{noremap = true})
 vim.api.nvim_set_keymap('x',' ','',{noremap = true})
+vim.g.user_emmet_leader_key = '<C-g>'
 
 map('c', '<C-A>','<Home>')
 map('c', '<C-E>','<End>')
@@ -69,7 +70,7 @@ local wk = require("which-key")
 local function cmd(s)
   return '<cmd>'..s..'<cr>'
 end
-local codeBase = ''
+local codeBase = '/home/yli/Program/github/'
 wk.register({
     q = {cmd('q')   , 'quit'}         ,
     Q = {cmd('qa!') , 'quit-no-save'} ,
@@ -159,7 +160,7 @@ wk.register({
       a = {cmd('Telescope commands')                      , 'action commands'} ,
       t = {cmd('Telescope colorscheme')                   , 'colorschemes' }   ,
       e = {cmd('Telescope find_files cwd=~/.config/nvim') , 'init.nvim'}       ,
-      S = {cmd('Reload')                                  , 'load config'}     ,
+      S = {cmd('luafile %')                               , 'load config'}     ,
       s = {cmd('Telescope search_history')                , 'search history'}  ,
       h = {cmd('Telescope help_tags')                     , 'help tags'}       ,
       c = {cmd('Telescope command_history')               , 'command history'} ,

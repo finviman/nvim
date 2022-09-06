@@ -17,7 +17,13 @@ cmp.setup({
       ['<CR>'] = cmp.mapping.confirm({ select = true }), 
   }),
   sources = {
-      { name = 'buffer' },
+      { name = 'buffer',
+        option = {
+            get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+            end
+        }
+      },
       { name = 'path' },
       { name = 'nvim_lsp' }
   }
@@ -121,7 +127,9 @@ return require('packer').startup({function(use)
     requires = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp"
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-vsnip",
+        "hrsh7th/vim-vsnip",
     }
   }
 	use {'nvim-telescope/telescope.nvim',opt=true,cmd={'Telescope'},config=config_tele,requires = { {'nvim-lua/plenary.nvim'} }}
@@ -171,10 +179,12 @@ return require('packer').startup({function(use)
     }) end
   }
   use {"ahmedkhalf/project.nvim",
-  config = function()
-    require("project_nvim").setup{detection_methods = { "pattern" }}
-  end
-}
+    config = function()
+        require("project_nvim").setup{detection_methods = { "pattern" }}
+    end
+  }
+  use {"mattn/emmet-vim",opt=true,ft={'vue','html','css','scss','sass'}
+  }
 end,
 config = {
     compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
