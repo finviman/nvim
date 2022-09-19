@@ -1,3 +1,4 @@
+local lspkind = require('lspkind')
 local cmp = require'cmp'
 cmp.setup({
   snippet = {
@@ -26,6 +27,12 @@ cmp.setup({
       },
       { name = 'path' },
       { name = 'nvim_lsp' }
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+    })
   }
 })
 
@@ -123,6 +130,7 @@ return require('packer').startup({function(use)
     }
   end
   }
+  use {'onsails/lspkind.nvim'}
   use {'hrsh7th/nvim-cmp',
     requires = {
         "hrsh7th/cmp-buffer",
@@ -160,7 +168,11 @@ return require('packer').startup({function(use)
 	use {'laishulu/vim-macos-ime'}
 	use {'lewis6991/gitsigns.nvim',opt=true,event='BufRead',config=config_gitSign}
 	use {'sindrets/diffview.nvim',opt=true,cmd='DiffviewOpen'}
-	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline'}
+	use {'simrat39/symbols-outline.nvim',opt=true,cmd='SymbolsOutline',
+    config = function()
+      require("symbols-outline").setup()
+    end
+  }
 	use {'akinsho/nvim-toggleterm.lua',
     config = function()
       require("toggleterm").setup{}
