@@ -19,6 +19,7 @@ map('i', '<C-f>','<Right>')
 map('i', '<C-b>','<Left>')
 map('i', '<C-n>','<Down>')
 map('i', '<C-p>','<Up>')
+map('i', '<C-s>','<Esc>:w<cr>a')
 map('n', '<Esc>',':nohl<cr>',{silent=true})
 map('n', '<M-[>',':put =repeat(nr2char(10), v:count1)<cr>')
 map('n', '<M-]>',':put! =repeat(nr2char(10), v:count1)<cr>')
@@ -84,6 +85,7 @@ wk.register({
       t = {cmd('NvimTreeToggle')       , 'neo-tree'}          ,
       l = {cmd('checktime')            , 'load new change'}   ,
       d = {cmd('lua _ranger_toggle()') , 'ranger'}            ,
+      w = {cmd('w !sudo tee %')        , 'sudo write'}        ,
     },
 
     b = {
