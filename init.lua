@@ -1,4 +1,5 @@
-require'plugins'
+require'plugins.init'
+require'plugins.config'
 require'mappings'
 
 local function load_options()
