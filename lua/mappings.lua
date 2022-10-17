@@ -65,6 +65,9 @@ require("which-key").setup {
       g = false,
     },
   },
+  window = {
+    border = "double",
+  }
 }
 
 local wk = require("which-key")
