@@ -86,7 +86,7 @@ local function load_options()
       expandtab      = true;
       autoindent     = true;
       tabstop        = 2;
-      shiftwidth     = 4;
+      shiftwidth     = 2;
       softtabstop    = -1;
       breakindentopt = "shift:2,min:20";
       nowrap         = true;
