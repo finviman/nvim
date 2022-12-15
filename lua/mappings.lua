@@ -109,7 +109,7 @@ wk.register({
        f = {cmd('lua vim.lsp.buf.formatting()')           , 'format code'}       ,
        ['['] = {cmd('lua vim.lsp.diagnostic.goto_prev()') , 'pre diagnostics'}   ,
        [']'] = {cmd('lua vim.lsp.diagnostic.goto_next()') , 'next diagnostics'}  ,
-       R = {':call RunProgram()'                          , 'Run!'}              ,
+       e = {cmd('!python %')                              , 'Run!'}              ,
        t = {cmd('Telescope treesitter')                   , 'tag list'}          ,
        i = {cmd('Telescope lsp_implementations')          , 'to implementation'} ,
        z = {cmd(':call ToggleFold()')                     , 'fold/unfold code'}  ,
