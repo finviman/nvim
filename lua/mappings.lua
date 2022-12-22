@@ -88,7 +88,7 @@ wk.register({
       t = {cmd('NvimTreeToggle')       , 'neo-tree'}          ,
       l = {cmd('checktime')            , 'load new change'}   ,
       d = {cmd('lua _ranger_toggle()') , 'ranger'}            ,
-      w = {cmd('w !sudo tee %<cr>')        , 'sudo write'}        ,
+      w = {cmd('w !sudo tee %<cr>')    , 'sudo write'}        ,
     },
 
     b = {
