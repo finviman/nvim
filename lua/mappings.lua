@@ -98,7 +98,7 @@ wk.register({
        D = {cmd('Bclose')            , 'kill-other-buffers'} ,
        [']'] = {cmd('bnext')         , 'next-buffer'}        ,
        ['['] = {cmd('bprevious')     , 'previous-buffer'}    ,
-       s = {cmd('HopChar1')          , 'easy motion'}        ,
+       s = {cmd('HopChar2')          , 'easy motion'}        ,
     },
 
     c = {
@@ -189,5 +189,6 @@ wk.register({
       K = {cmd('resize -5') , 'expand-window-up'}    ,
       ['='] = {'<C-W>='     , 'balance-window'}      ,
       ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
+      s = {cmd('HopChar2MW'), 'easy motion'}         ,
     }
   }, { prefix = "<Space>" })

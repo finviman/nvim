@@ -118,7 +118,7 @@ return require('packer').startup({function(use)
   }
   use {'steelsojka/pears.nvim',config=function() require "pears".setup() end}
   use {'lewis6991/impatient.nvim'}
-  use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar1'},
+  use {'phaazon/hop.nvim', as = 'hop',opt=true,cmd={'HopChar2','HopChar2MW'},
     config = function()
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
