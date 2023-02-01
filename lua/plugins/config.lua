@@ -36,9 +36,6 @@ cmp.setup({
   }
 })
 
-require('impatient')
-require('packer_compiled')
-
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(function(server)
@@ -62,3 +59,59 @@ end
 vim.opt.termguicolors = true
 require('zephyr') --speed colorscheme
 require('statusline.evil_lualine')
+
+-- lazy load gitsign
+local function config_gitSign()
+require('gitsigns').setup{
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '▌', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 300,
+  }
+}
+end
+
+-- lazy load telescope
+local function config_tele()
+    require('telescope').load_extension('fzf')
+    local action_layout = require('telescope.actions.layout')
+    local actions = require('telescope.actions')
+    require('telescope').setup{
+    defaults = {
+        prompt_prefix = "✎ ",
+        selection_caret = "➳ ",
+        layout_strategy = "horizontal",
+        layout_config = {
+            horizontal ={
+                preview_width = 80
+            }
+        },
+        mappings = {
+          i = {
+            ["<esc>"] = actions.close,
+            ["<C-k>"] = action_layout.toggle_preview
+          }
+        },
+      path_display = {
+        "shorten",
+        "absolute",
+        },
+
+        dynamic_preview_title=true
+    },
+    extensions = {
+    fzf = {
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+    }
+  }
+}
+end
