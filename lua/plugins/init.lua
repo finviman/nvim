@@ -1,26 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(
-	'glepnir/zephyr-nvim',
-	'nvim-lualine/lualine.nvim',
-	'kyazdani42/nvim-web-devicons',
-	'nvim-lua/plenary.nvim',
-plugins, 
-opts
-)
-
-return require('packer').startup({function(use)
 	use {'wbthomason/packer.nvim',
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
     config = function()
@@ -39,7 +17,6 @@ return require('packer').startup({function(use)
     end,
     requires = { {"nvim-tree/nvim-web-devicons", ,
   ,)
-  use {'onsails/lspkind.nvim',
   use {'hrsh7th/nvim-cmp',
     requires = {
         "hrsh7th/cmp-buffer",
