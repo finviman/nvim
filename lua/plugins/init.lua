@@ -68,6 +68,14 @@ return require('packer').startup({function(use)
     }
   end
   }
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+    requires = { {"nvim-tree/nvim-web-devicons"} }
+  })
   use {'onsails/lspkind.nvim'}
   use {'hrsh7th/nvim-cmp',
     requires = {

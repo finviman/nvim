@@ -102,22 +102,23 @@ wk.register({
        [']'] = {cmd('bnext')         , 'next-buffer'}        ,
        ['['] = {cmd('bprevious')     , 'previous-buffer'}    ,
        s = {cmd('HopChar2')          , 'easy motion'}        ,
+       r = {cmd('Lspsaga rename')    , 'rename'}        ,
     },
 
     c = {
        name='+Code'                                       ,
-       a = {cmd('Telescope lsp_code_actions')             , 'code action'}       ,
+       a = {cmd('Lspsaga code_action')                    , 'code action'}       ,
        d = {cmd('Telescope lsp_definitions')              , 'to definition'}     ,
        r = {cmd('Telescope lsp_references')               , 'to reference'}      ,
-       f = {cmd('lua vim.lsp.buf.formatting()')           , 'format code'}       ,
+       f = {cmd('lua vim.lsp.buf.format({async = true})')           , 'format code'}       ,
        ['['] = {cmd('lua vim.lsp.diagnostic.goto_prev()') , 'pre diagnostics'}   ,
        [']'] = {cmd('lua vim.lsp.diagnostic.goto_next()') , 'next diagnostics'}  ,
        e = {cmd('!python %')                              , 'Run!'}              ,
        t = {cmd('Telescope treesitter')                   , 'tag list'}          ,
        i = {cmd('Telescope lsp_implementations')          , 'to implementation'} ,
-       z = {cmd(':call ToggleFold()')                     , 'fold/unfold code'}  ,
-       h = {cmd('lua vim.lsp.buf.hover()')                , 'code doc'}          ,
-       l = {cmd('Telescope loclist')                      , 'location list'}     ,
+       c = {cmd('Lspsaga show_cursor_diagnostics')        , 'show diagnostics'}  ,
+       h = {cmd('Lspsaga hover_doc')                      , 'code doc'}          ,
+       l = {cmd('Lspsaga lsp_finder')                      , 'location list'}     ,
     }                                                     ,
 
     g = {
