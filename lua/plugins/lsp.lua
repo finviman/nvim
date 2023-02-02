@@ -32,7 +32,6 @@ return {
         bashls = {},
         tsserver = {},
         volar = {},
-        -- python java typescript bash etc.
       },
       setup = {
         -- example to setup with typescript.nvim
@@ -127,5 +126,11 @@ return {
   },
 
   -- lspsaga
-  {"glepnir/lspsaga.nvim"},
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+  },
 }
