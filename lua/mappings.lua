@@ -49,16 +49,6 @@ map('',  '<C-h>','<C-W>h')
 map('',  '<C-l>','<C-W>l')
 map('t', '<Esc>',"<C-\\><C-n>",{silent=true})
 
-local function _lazygit_toggle()
-  local Terminal  = require('toggleterm.terminal').Terminal
-  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
-  lazygit:toggle()
-end
-local function _ranger_toggle()
-  local Terminal  = require('toggleterm.terminal').Terminal
-  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
-  ranger:toggle()
-end
 
 require("which-key").setup {
   plugins = {
@@ -100,7 +90,7 @@ wk.register({
       S = {cmd('wa')                   , 'save all'}          ,
       t = {cmd('NvimTreeToggle')       , 'neo-tree'}          ,
       l = {cmd('checktime')            , 'load new change'}   ,
-      d = {cmd('lua _ranger_toggle()') , 'ranger'}            ,
+      d = {cmd('lua Ranger_toggle()')  , 'ranger'}            ,
       w = {cmd('w !sudo tee %<cr>')    , 'sudo write'}        ,
     },
 
@@ -149,7 +139,7 @@ wk.register({
       ['/'] = {cmd('Telescope live_grep')                       , 'search in git files'}     ,
       ['<'] = {cmd('diffget')                                   , 'diffget'}                 ,
       ['>'] = {cmd('diffput')                                   , 'diffput'}                 ,
-      l = {cmd("lua _lazygit_toggle()")                         , 'lazygit'}                 ,
+      l = {cmd("lua Lazygit_toggle()")                          , 'lazygit'}                 ,
     }                                                           ,
 
     p = {

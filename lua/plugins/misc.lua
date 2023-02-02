@@ -1,11 +1,21 @@
 -- contains plugins act as dependency to other plugins.
+function Lazygit_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
+  lazygit:toggle()
+end
+function Ranger_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
+  ranger:toggle()
+end
 return {
 	{'glepnir/zephyr-nvim'},
 	{'nvim-lualine/lualine.nvim'},
 	{'kyazdani42/nvim-web-devicons'},
 	{'nvim-lua/plenary.nvim'},
 	{'steelsojka/pears.nvim'},
-	{'akinsho/toggleterm.nvim', name='toggleterm', event='BufRead',tag='v2.2.1'},
+	{'akinsho/toggleterm.nvim', tag='2.3.0', config=true },
 	{'folke/which-key.nvim'},
 	{'laishulu/vim-macos-ime',lazy=false},
 	{'sindrets/diffview.nvim',cmd='DiffviewOpen'},
@@ -23,7 +33,7 @@ return {
   },
 
   {
-    'phaazon/hop.nvim', cmd={'HopChar2','HopChar2MW'},
+    'phaazon/hop.nvim', cmd={'HopChar2','HopChar2MW'},config = true
   },
   -- git sign
 	{ 
