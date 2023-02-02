@@ -4,12 +4,12 @@ return {
 	{'nvim-lualine/lualine.nvim'},
 	{'kyazdani42/nvim-web-devicons'},
 	{'nvim-lua/plenary.nvim'},
-  {'steelsojka/pears.nvim'},
-	{'akinsho/nvim-toggleterm.lua', lazy=false},
+	{'steelsojka/pears.nvim'},
+	{'akinsho/toggleterm.nvim', name='toggleterm', event='BufRead',tag='v2.2.1'},
 	{'folke/which-key.nvim'},
 	{'laishulu/vim-macos-ime',lazy=false},
 	{'sindrets/diffview.nvim',cmd='DiffviewOpen'},
-	{'nvim-telescope/telescope-fzf-native.nvim',build = 'make',lazy=false}
+	{'nvim-telescope/telescope-fzf-native.nvim',build = 'make',lazy=false},
 
   {
     "mattn/emmet-vim",
@@ -24,7 +24,7 @@ return {
 
   {
     'phaazon/hop.nvim', cmd={'HopChar2','HopChar2MW'},
-  }
+  },
   -- git sign
 	{ 
     'lewis6991/gitsigns.nvim',event='BufReadPre',
@@ -55,9 +55,9 @@ return {
       view = {
         mappings = {
           list = {
-            {key="C",action="cd"}
-            {key="O",action="expand_all"}
-            {key="o",action="preview"}
+            {key="C",action="cd"},
+            {key="O",action="expand_all"},
+            {key="o",action="preview"},
           }
         }
       },
@@ -65,7 +65,7 @@ return {
       remove_keymaps = {"<C-e>"}
     },
     cmd={'NvimTreeFindFile','NvimTreeToggle'}
-  }
+  },
 
   -- telescope
 	{
@@ -209,6 +209,6 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
-  }
+  },
 
 }

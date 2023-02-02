@@ -11,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.mapleader = ','
 require("lazy").setup("plugins",{})
 
 require'mappings'
@@ -129,3 +130,4 @@ end
 
 load_options()
 require('zephyr') --speed colorscheme
+require('evil_lualine') 
