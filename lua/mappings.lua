@@ -50,6 +50,17 @@ map('',  '<C-h>','<C-W>h')
 map('',  '<C-l>','<C-W>l')
 map('t', '<Esc>',"<C-\\><C-n>",{silent=true})
 
+local function _lazygit_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
+  lazygit:toggle()
+end
+local function _ranger_toggle()
+  local Terminal  = require('toggleterm.terminal').Terminal
+  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
+  ranger:toggle()
+end
+
 require("which-key").setup {
   plugins = {
     marks = true,

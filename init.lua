@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require("lazy").setup("plugins",{})
 
 require'mappings'
@@ -129,3 +128,4 @@ local function load_options()
 end
 
 load_options()
+require('zephyr') --speed colorscheme
