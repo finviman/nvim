@@ -58,7 +58,6 @@ end
 -- must before statusline config
 vim.opt.termguicolors = true
 require('zephyr') --speed colorscheme
-require('statusline.evil_lualine')
 
 -- lazy load gitsign
 local function config_gitSign()

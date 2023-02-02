@@ -190,7 +190,7 @@ wk.register({
       H = {'<C-W>8<'        , 'expand-window-left'}  ,
       J = {cmd('resize +5') , 'expand-window-below'} ,
       L = {'<C-W>8>'        , 'expand-window-right'} ,
-      K = {cmd('resize -5') , 'expand-window-up'}    ,
+      K = {cmd('resize +5') , 'expand-window-up'}    ,
       ['='] = {'<C-W>='     , 'balance-window'}      ,
       ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
       s = {cmd('HopChar2MW'), 'easy motion'}         ,
