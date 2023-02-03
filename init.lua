@@ -95,7 +95,7 @@ local function load_options()
       helpheight     = 12;
       previewheight  = 12;
       showcmd        = true;
-      cmdheight      = 2;
+      cmdheight      = 1;
       cmdwinheight   = 5;
       equalalways    = false;
       laststatus     = 2;
