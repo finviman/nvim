@@ -161,7 +161,7 @@ wk.register({
        z = {cmd('Limelight!!')               , 'zen mode'}         ,
        w = {cmd('set wrap!')                 , 'line wrap'}        ,
        l = {cmd('set list!')                 , 'nonvisual char'}   ,
-       t = {cmd('SymbolsOutline')            , 'SymbolsOutline'}   ,
+       t = {cmd('Lspsaga outline')           , 'symbols outline'}   ,
     }                                        ,
 
     v = {
