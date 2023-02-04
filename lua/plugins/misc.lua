@@ -1,145 +1,177 @@
--- contains plugins act as dependency to other plugins.
+--
 function Lazygit_toggle()
-  local Terminal  = require('toggleterm.terminal').Terminal
-  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float'})
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
   lazygit:toggle()
 end
+
 function Ranger_toggle()
-  local Terminal  = require('toggleterm.terminal').Terminal
-  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction='float'})
+  local Terminal = require("toggleterm.terminal").Terminal
+  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction = "float" })
   ranger:toggle()
 end
+
+function Colorcolumn_toggle()
+  local value = vim.api.nvim_get_option_value("colorcolumn", {})
+  if value == "" then
+    vim.api.nvim_set_option_value("colorcolumn", "79", {})
+  else
+    vim.api.nvim_set_option_value("colorcolumn", "", {})
+  end
+end
+
 return {
-	{'glepnir/zephyr-nvim'},
-	{'nvim-lualine/lualine.nvim'},
-	{'kyazdani42/nvim-web-devicons'},
-	{'nvim-lua/plenary.nvim'},
-	{'akinsho/toggleterm.nvim', tag='2.3.0', config=true },
-	{'folke/which-key.nvim'},
-	{'laishulu/vim-macos-ime',lazy=false},
-	{'sindrets/diffview.nvim',cmd='DiffviewOpen'},
-	{'nvim-telescope/telescope-fzf-native.nvim',build = 'make',lazy=false},
-  {'ahmedkhalf/project.nvim',config=function() require('project_nvim').setup() end},
-  {'windwp/nvim-autopairs',config = true},
-  
-  
+  { "glepnir/zephyr-nvim" },
+  { "nvim-lualine/lualine.nvim" },
+  { "kyazdani42/nvim-web-devicons" },
+  { "nvim-lua/plenary.nvim" },
+  { "akinsho/toggleterm.nvim", tag = "2.3.0", config = true },
+  { "folke/which-key.nvim" },
+  { "laishulu/vim-macos-ime", lazy = false },
+  { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false },
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup()
+    end,
+  },
+  { "windwp/nvim-autopairs", config = true },
+
   {
     "mattn/emmet-vim",
-    ft={'vue','html','css','scss','sass'}
+    ft = { "vue", "html", "css", "scss", "sass" },
   },
 
-  {'winston0410/commented.nvim',
-    opts = {
-      keybindings = {n = "gc", v = "gc", nl = "gcc",}
-    }
-  },
+  { "winston0410/commented.nvim", opts = {
+    keybindings = { n = "gc", v = "gc", nl = "gcc" },
+  } },
 
   {
-    'phaazon/hop.nvim', cmd={'HopChar2','HopChar2MW'},config = true
+    "phaazon/hop.nvim",
+    cmd = { "HopChar2", "HopChar2MW" },
+    config = true,
   },
   -- git sign
-	{ 
-    'lewis6991/gitsigns.nvim',event='BufReadPre',
-    opts={
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    opts = {
       signs = {
-        add          = {hl = 'GitSignsAdd'   , text = '▌', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-        change       = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-        delete       = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-        topdelete    = {hl = 'GitSignsDelete', text = '◺', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-        changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+        add = { hl = "GitSignsAdd", text = "▌", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+        change = { hl = "GitSignsChange", text = "▌", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        delete = { hl = "GitSignsDelete", text = "◺", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        topdelete = { hl = "GitSignsDelete", text = "◺", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        changedelete = {
+          hl = "GitSignsChange",
+          text = "▌",
+          numhl = "GitSignsChangeNr",
+          linehl = "GitSignsChangeLn",
+        },
       },
       current_line_blame_opts = {
         virt_text = true,
-        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
         delay = 300,
-      }
-    }
+      },
+    },
   },
 
   -- nvim tree
-	{ 
-    'kyazdani42/nvim-tree.lua',
+  {
+    "kyazdani42/nvim-tree.lua",
     opts = {
-      respect_buf_cwd= true,
+      respect_buf_cwd = true,
       filters = {
-        custom = {'.git', '__pycache__','node_modules', '.cache','.idea','.settings','.classpath','.project','*.iml','target'}
+        custom = {
+          ".git",
+          "__pycache__",
+          "node_modules",
+          ".cache",
+          ".idea",
+          ".settings",
+          ".classpath",
+          ".project",
+          "*.iml",
+          "target",
+        },
       },
       view = {
         mappings = {
           list = {
-            {key="C",action="cd"},
-            {key="O",action="expand_all"},
-            {key="o",action="preview"},
-          }
-        }
+            { key = "C", action = "cd" },
+            { key = "O", action = "expand_all" },
+            { key = "o", action = "preview" },
+          },
+        },
       },
       on_attach = "disabled",
-      remove_keymaps = {"<C-e>"}
+      remove_keymaps = { "<C-e>" },
     },
-    cmd={'NvimTreeFindFile','NvimTreeToggle'}
+    cmd = { "NvimTreeFindFile", "NvimTreeToggle" },
   },
 
   -- telescope
-	{
-    'nvim-telescope/telescope.nvim',
-    cmd={'Telescope'},
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = { "Telescope" },
     config = function()
-      require('telescope').load_extension('fzf')
-      local action_layout = require('telescope.actions.layout')
-      local actions = require('telescope.actions')
-      require('telescope').setup{
+      require("telescope").load_extension("fzf")
+      local action_layout = require("telescope.actions.layout")
+      local actions = require("telescope.actions")
+      require("telescope").setup({
         defaults = {
-            prompt_prefix = "✎ ",
-            selection_caret = "➳ ",
-            layout_strategy = "horizontal",
-            layout_config = {
-                horizontal ={
-                    preview_width = 80
-                }
+          prompt_prefix = "✎ ",
+          selection_caret = "➳ ",
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              preview_width = 80,
             },
-            mappings = {
-              i = {
-                ["<esc>"] = actions.close,
-                ["<C-k>"] = action_layout.toggle_preview
-              }
+          },
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+              ["<C-k>"] = action_layout.toggle_preview,
             },
+          },
           path_display = {
             "shorten",
             "absolute",
-            },
+          },
 
-            dynamic_preview_title=true
+          dynamic_preview_title = true,
         },
         extensions = {
           fzf = {
             override_generic_sorter = false, -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
-          }
-        }
-      }
-    end
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+          },
+        },
+      })
+    end,
   },
 
   -- nvim-cmp
   {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     dependencies = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp",
-        "onsails/lspkind.nvim",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip"
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lsp",
+      "onsails/lspkind.nvim",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      local lspkind = require('lspkind')
-      local cmp = require'cmp'
+      local lspkind = require("lspkind")
+      local cmp = require("cmp")
       cmp.setup({
         snippet = {
           expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
-            require'luasnip'.lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
         window = {
@@ -147,33 +179,33 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+          ["<Tab>"] = cmp.mapping.select_next_item(),
+          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = {
           {
-            name = 'buffer',
+            name = "buffer",
             option = {
-                get_bufnrs = function()
-                    return vim.api.nvim_list_bufs()
-                end
-            }
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
           },
-          { name = 'path' },
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }
+          { name = "path" },
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
         },
         formatting = {
           format = lspkind.cmp_format({
-            mode = 'symbol_text', -- show only symbol annotations
+            mode = "symbol_text", -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          })
-        }
+          }),
+        },
       })
-    end
+    end,
   },
 
   -- nvim-treesitter
@@ -183,7 +215,7 @@ return {
     build = ":TSUpdate",
     event = "BufReadPost",
     keys = {
-      { "<c-space>", desc = "Increment selection" },
+      { "<c-a>", desc = "Increment selection" },
       { "<bs>", desc = "Schrink selection", mode = "x" },
     },
     ---@type TSConfig
@@ -212,8 +244,8 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
+          init_selection = "<C-a>",
+          node_incremental = "<C-a>",
           scope_incremental = "<nop>",
           node_decremental = "<bs>",
         },
@@ -224,5 +256,4 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-
 }

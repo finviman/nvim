@@ -94,6 +94,7 @@ return {
           -- nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
+          nls.builtins.formatting.black,
         },
       }
     end,
