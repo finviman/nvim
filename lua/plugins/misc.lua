@@ -36,7 +36,7 @@ return {
       require("project_nvim").setup()
     end,
   },
-  { "windwp/nvim-autopairs", config = true },
+  { "windwp/nvim-autopairs", event="InsertEnter",config = true },
 
   {
     "mattn/emmet-vim",
