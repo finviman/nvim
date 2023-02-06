@@ -192,6 +192,7 @@ wk.register({
       j = {'<C-W>j'         , 'window-below'}        ,
       l = {'<C-W>l'         , 'window-right'}        ,
       k = {'<C-W>k'         , 'window-up'}           ,
+      m = {'<C-W>|<C-W>_'   , 'maximum-window'}      ,
       H = {'<C-W>8<'        , 'expand-window-left'}  ,
       J = {cmd('resize +5') , 'expand-window-below'} ,
       L = {'<C-W>8>'        , 'expand-window-right'} ,

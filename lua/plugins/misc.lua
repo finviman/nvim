@@ -24,7 +24,6 @@ return {
   { "glepnir/zephyr-nvim" },
   { "nvim-lualine/lualine.nvim" },
   { "kyazdani42/nvim-web-devicons" },
-  { "nvim-lua/plenary.nvim" },
   { "akinsho/toggleterm.nvim", tag = "2.3.0", config = true },
   { "folke/which-key.nvim" },
   { "laishulu/vim-macos-ime", lazy = false },
@@ -114,6 +113,7 @@ return {
   -- telescope
   {
     "nvim-telescope/telescope.nvim",
+    dependencies= { "nvim-lua/plenary.nvim" },
     cmd = { "Telescope" },
     config = function()
       require("telescope").load_extension("fzf")
