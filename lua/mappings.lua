@@ -185,8 +185,8 @@ wk.register({
 
     w = {
       name= '+Windows'      ,
-      ['_'] = {'<C-W>s'     , 'split-window-below'}  ,
-      ['|'] = {'<C-W>v'     , 'split-window-right'}  ,
+      s = {'<C-W>s'         , 'split-window-below'}  ,
+      v = {'<C-W>v'         , 'split-window-right'}  ,
       d = {'<C-W>q'         , 'close window'}        ,
       h = {'<C-W>h'         , 'window-left'}         ,
       j = {'<C-W>j'         , 'window-below'}        ,
@@ -198,6 +198,6 @@ wk.register({
       K = {cmd('resize +5') , 'expand-window-up'}    ,
       ['='] = {'<C-W>='     , 'balance-window'}      ,
       ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
-      s = {cmd('HopChar2MW'), 'easy motion'}         ,
+      f = {cmd('HopChar2MW'), 'easy motion'}         ,
     }
   }, { prefix = "<Space>" })
