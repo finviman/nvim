@@ -7,6 +7,7 @@
   "commented.nvim": { "branch": "master", "commit": "be322c5ef455800984705cee97490a5450f072bc" },
   "diffview.nvim": { "branch": "main", "commit": "ab3757c1ea1b84ef59f7dda54f11d10022e0e3b7" },
   "emmet-vim": { "branch": "master", "commit": "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d" },
+  "friendly-snippets": { "branch": "main", "commit": "a6f7a1609addb4e57daa6bedc300f77f8d225ab7" },
   "gitsigns.nvim": { "branch": "main", "commit": "0d4fe37ba5285171f3729da955955205f3fa945b" },
   "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "lazy.nvim": { "branch": "main", "commit": "9b208696e139a404d159963b975a5b90af38439b" },
