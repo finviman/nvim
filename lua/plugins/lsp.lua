@@ -129,7 +129,7 @@ return {
   -- lspsaga
   {
     "glepnir/lspsaga.nvim",
-    event = "BufRead",
+    event = "BufReadPre",
     config = true
   },
 }
