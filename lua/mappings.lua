@@ -126,8 +126,6 @@ wk.register({
        [']'] = {cmd('')         , 'expand search'}        ,
        ['['] = {cmd('')     , 'shrink search'}    ,
        t = {cmd('')     , 'text align'}    ,
-       d = {cmd('')     , 'delete surround'}    ,
-       a = {cmd('')     , 'add surround'}    ,
     },
 
     g = {
