@@ -261,7 +261,7 @@ return {
     build = ":TSUpdate",
     event = "BufReadPost",
     keys = {
-      { "<c-a>", desc = "Increment selection" },
+      { "<c-q>", desc = "Increment selection" },
       { "<bs>", desc = "Schrink selection", mode = "x" },
     },
     ---@type TSConfig
@@ -290,8 +290,8 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<C-a>",
-          node_incremental = "<C-a>",
+          init_selection = "<C-q>",
+          node_incremental = "<C-q>",
           scope_incremental = "<nop>",
           node_decremental = "<bs>",
         },
