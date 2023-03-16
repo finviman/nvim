@@ -102,15 +102,10 @@ return {
     opts = {
       respect_buf_cwd = true,
       filters = {
+        dotfiles = true,
         custom = {
-          ".git",
           "__pycache__",
           "node_modules",
-          ".cache",
-          ".idea",
-          ".settings",
-          ".classpath",
-          ".project",
           "*.iml",
           "target",
         },
