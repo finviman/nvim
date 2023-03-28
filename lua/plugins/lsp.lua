@@ -27,7 +27,7 @@ return {
       ---@type lspconfig.options
       servers = {
         jsonls = {},
-        sumneko_lua = {},
+        lua_ls = {},
         pyright = {},
         bashls = {},
         tsserver = {},
