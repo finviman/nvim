@@ -115,7 +115,7 @@ return {
           list = {
             { key = "C", action = "cd" },
             { key = "O", action = "expand_all" },
-            { key = "o", action = "preview" },
+            { key = "o", action = "open preview" },
           },
         },
       },
