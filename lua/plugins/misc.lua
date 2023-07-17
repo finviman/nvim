@@ -7,7 +7,7 @@ end
 
 function Ranger_toggle()
   local Terminal = require("toggleterm.terminal").Terminal
-  local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction = "float" })
+  local ranger = Terminal:new({ cmd = "lf", hidden = true, direction = "float" })
   ranger:toggle()
 end
 
