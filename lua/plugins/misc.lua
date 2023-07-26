@@ -20,6 +20,22 @@ function Colorcolumn_toggle()
   end
 end
 
+local function on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+  api.config.mappings.default_on_attach(bufnr)
+  -- You might tidy things by removing these along with their default mapping.
+  vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
+  vim.keymap.del('n', '<C-e>', { buffer = bufnr })
+  -- You will need to insert "your code goes here" for any mappings with a custom action_cb
+  vim.keymap.set('n', 'C', api.tree.change_root_to_node, opts('CD'))
+  vim.keymap.set('n', 'O', api.tree.expand_all, opts('Expand All'))
+  vim.keymap.set('n', 'v', api.node.open.preview, opts('Open Preview'))
+end
+
 return {
   { "glepnir/zephyr-nvim" },
   { "nvim-lualine/lualine.nvim" },
@@ -110,17 +126,7 @@ return {
           "target",
         },
       },
-      view = {
-        mappings = {
-          list = {
-            { key = "C", action = "cd" },
-            { key = "O", action = "expand_all" },
-            { key = "o", action = "open preview" },
-          },
-        },
-      },
-      on_attach = "disabled",
-      remove_keymaps = { "<C-e>" },
+      on_attach = on_attach,
     },
     cmd = { "NvimTreeFindFile", "NvimTreeToggle" },
   },
