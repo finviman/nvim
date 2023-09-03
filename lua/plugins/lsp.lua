@@ -1,4 +1,4 @@
-local lsp_filetypes={'java','ts','json','python','lua','vue','js','sh','c','cpp','go'}
+local lsp_filetypes={'java','typescript','json','python','lua','vue','javascript','sh','c','cpp','go'}
 return {
 	{
     'neovim/nvim-lspconfig',

@@ -131,7 +131,7 @@ ins_left {
   cond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = 'bold' },
   symbols ={
-    modified = '',
+    modified = '󰷥',
     readonly = '',
     unnamed = '[No Name]',
     newfile = '[New]',  

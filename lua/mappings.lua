@@ -49,6 +49,13 @@ map('',  '<C-h>','<C-W>h')
 map('',  '<C-l>','<C-W>l')
 map('t', '<Esc>',"<C-\\><C-n>",{silent=true})
 
+if vim.g.neovide then
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('v', '<D-v>', '"+p') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<ESC>"+pi') -- Paste insert mode
+end
 
 require("which-key").setup {
   plugins = {
