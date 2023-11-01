@@ -92,6 +92,7 @@ wk.register({
     f = {
       name = '+Files',
       f = {cmd('Telescope find_files') , 'project file list'} ,
+      g = {cmd('Telescope git_files') , 'git repo file list'} ,
       r = {cmd('Telescope oldfiles')   , 'history files'}     ,
       s = {cmd('w')                    , 'save file'}         ,
       S = {cmd('wa')                   , 'save all'}          ,
@@ -123,7 +124,7 @@ wk.register({
        i = {cmd('Telescope lsp_implementations')          , 'to implementation'} ,
        c = {cmd('Lspsaga show_cursor_diagnostics')        , 'show diagnostics'}  ,
        h = {cmd('Lspsaga hover_doc')                      , 'code doc'}          ,
-       s = {cmd('Lspsaga lsp_finder')                     , 'symbols finder'}     ,
+       s = {cmd('Telescope lsp_dynamic_workspace_symbols'), 'symbols finder'}     ,
        R = {cmd('Lspsaga rename')                         , 'rename symbol'}             ,
     }                                                     ,
 
