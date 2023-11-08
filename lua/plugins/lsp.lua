@@ -85,7 +85,7 @@ return {
 
   -- formatters
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     ft = lsp_filetypes,
     opts = function()
       local nls = require("null-ls")
@@ -93,8 +93,8 @@ return {
         sources = {
           -- nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.flake8,
-          nls.builtins.formatting.black,
+          nls.builtins.diagnostics.ruff,
+          nls.builtins.formatting.ruff,
         },
       }
     end,
@@ -110,7 +110,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "flake8",
+        "ruff",
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
