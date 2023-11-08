@@ -105,7 +105,7 @@ local function load_options()
       pumblend       = 10;
       winblend       = 10;
       cursorline     = true;
-      guifont        = "MesloLGS NF:h18";
+      guifont        = "JetBrainsMono Nerd Font:h18";
     }
 
     local bw_local  = {
