@@ -4,7 +4,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-vim.g.mapleader = ','
 vim.api.nvim_set_keymap('n',' ','',{noremap = true})
 vim.api.nvim_set_keymap('x',' ','',{noremap = true})
 vim.g.user_emmet_leader_key = '<C-g>'
@@ -50,6 +49,14 @@ map('',  '<C-h>','<C-W>h')
 map('',  '<C-l>','<C-W>l')
 map('t', '<Esc>',"<C-\\><C-n>",{silent=true})
 
+if vim.g.neovide then
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('v', '<D-v>', '"+p') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<ESC>"+pi') -- Paste insert mode
+end
+
 require("which-key").setup {
   plugins = {
     marks = true,
@@ -85,12 +92,13 @@ wk.register({
     f = {
       name = '+Files',
       f = {cmd('Telescope find_files') , 'project file list'} ,
+      g = {cmd('Telescope git_files') , 'git repo file list'} ,
       r = {cmd('Telescope oldfiles')   , 'history files'}     ,
       s = {cmd('w')                    , 'save file'}         ,
       S = {cmd('wa')                   , 'save all'}          ,
       t = {cmd('NvimTreeToggle')       , 'neo-tree'}          ,
       l = {cmd('checktime')            , 'load new change'}   ,
-      d = {cmd('lua _ranger_toggle()') , 'ranger'}            ,
+      d = {cmd('lua Ranger_toggle()')  , 'ranger'}            ,
       w = {cmd('w !sudo tee %<cr>')    , 'sudo write'}        ,
     },
 
@@ -101,8 +109,6 @@ wk.register({
        D = {cmd('Bclose')            , 'kill-other-buffers'} ,
        [']'] = {cmd('bnext')         , 'next-buffer'}        ,
        ['['] = {cmd('bprevious')     , 'previous-buffer'}    ,
-       s = {cmd('HopChar2')          , 'easy motion'}        ,
-       r = {cmd('Lspsaga rename')    , 'rename'}        ,
     },
 
     c = {
@@ -110,41 +116,43 @@ wk.register({
        a = {cmd('Lspsaga code_action')                    , 'code action'}       ,
        d = {cmd('Telescope lsp_definitions')              , 'to definition'}     ,
        r = {cmd('Telescope lsp_references')               , 'to reference'}      ,
-       f = {cmd('lua vim.lsp.buf.format({async = true})')           , 'format code'}       ,
-       ['['] = {cmd('lua vim.lsp.diagnostic.goto_prev()') , 'pre diagnostics'}   ,
-       [']'] = {cmd('lua vim.lsp.diagnostic.goto_next()') , 'next diagnostics'}  ,
+       f = {cmd('lua vim.lsp.buf.format({async = true})') , 'format code'}       ,
+       ['['] = {cmd('lua vim.diagnostic.goto_prev()')     , 'pre diagnostics'}   ,
+       [']'] = {cmd('lua vim.diagnostic.goto_next()')     , 'next diagnostics'}  ,
        e = {cmd('!python %')                              , 'Run!'}              ,
        t = {cmd('Telescope treesitter')                   , 'tag list'}          ,
        i = {cmd('Telescope lsp_implementations')          , 'to implementation'} ,
        c = {cmd('Lspsaga show_cursor_diagnostics')        , 'show diagnostics'}  ,
        h = {cmd('Lspsaga hover_doc')                      , 'code doc'}          ,
-       l = {cmd('Lspsaga lsp_finder')                      , 'location list'}     ,
+       s = {cmd('Telescope lsp_dynamic_workspace_symbols'), 'symbols finder'}     ,
+       R = {cmd('Lspsaga rename')                         , 'rename symbol'}             ,
     }                                                     ,
+
+    e = {
+       name='+Edit'                ,
+       s = {cmd('HopChar2')          , 'easy motion'}        ,
+       t = {cmd('')     , 'text align'}    ,
+    },
 
     g = {
       name = "+Git"                                             ,
       b = {cmd('Gitsigns toggle_current_line_blame')            , 'git blame'}               ,
-      a = {':Git add %'                                         , 'git stage current'}       ,
-      A = {':Git add .'                                         , 'git stage all'}           ,
       o = {cmd('Telescope git_branches')                        , 'git branch list'}         ,
       s = {cmd('Telescope git_status')                          , 'git status'}              ,
-      c = {':Git commit'                                        , 'git commit'}              ,
-      P = {':Git --no-pager push'                               , 'git push to remote'}      ,
-      p = {':Git pull'                                          , 'git pull'}                ,
       ['['] = {cmd('lua require"gitsigns.actions".prev_hunk()') , 'previous changed chunk'}  ,
       [']'] = {cmd('lua require"gitsigns.actions".next_hunk()') , 'next changed chunk'}      ,
       r = {cmd('lua require"gitsigns".reset_hunk()')            , 'revert current change'}   ,
       d = {cmd('DiffviewOpen')                                  , 'git diff --cached'}       ,
-      w = {'Gbrowse'                                            , 'browse remote host file'} ,
       ['/'] = {cmd('Telescope live_grep')                       , 'search in git files'}     ,
       ['<'] = {cmd('diffget')                                   , 'diffget'}                 ,
       ['>'] = {cmd('diffput')                                   , 'diffput'}                 ,
-      l = {cmd("lua _lazygit_toggle()")                         , 'lazygit'}                 ,
+      g = {cmd("lua Lazygit_toggle()")                          , 'lazygit'}                 ,
     }                                                           ,
 
     p = {
       name= '+Projects'                                  ,
       f = {cmd('Telescope find_files cwd='..codeBase)    , 'files in codebase'}       ,
+      s = {cmd('Telescope projects')                     , 'switch projects'}         ,
       l = {cmd('NvimTreeFindFile')                       , 'locate file in FileTree'} ,
       d = {cmd('Telescope grep_string')                  , 'cursor word in project'}  ,
       D = {cmd('Telescope grep_string cwd='..codeBase )  , 'cursor word in codebase'} ,
@@ -161,7 +169,8 @@ wk.register({
        z = {cmd('Limelight!!')               , 'zen mode'}         ,
        w = {cmd('set wrap!')                 , 'line wrap'}        ,
        l = {cmd('set list!')                 , 'nonvisual char'}   ,
-       t = {cmd('SymbolsOutline')            , 'SymbolsOutline'}   ,
+       t = {cmd('Lspsaga outline')           , 'symbols outline'}   ,
+       c = {cmd('lua Colorcolumn_toggle()')  , 'color column 80'}   ,
     }                                        ,
 
     v = {
@@ -180,19 +189,20 @@ wk.register({
 
     w = {
       name= '+Windows'      ,
-      ['_'] = {'<C-W>s'     , 'split-window-below'}  ,
-      ['|'] = {'<C-W>v'     , 'split-window-right'}  ,
+      s = {'<C-W>s'         , 'split-window-below'}  ,
+      v = {'<C-W>v'         , 'split-window-right'}  ,
       d = {'<C-W>q'         , 'close window'}        ,
       h = {'<C-W>h'         , 'window-left'}         ,
       j = {'<C-W>j'         , 'window-below'}        ,
       l = {'<C-W>l'         , 'window-right'}        ,
       k = {'<C-W>k'         , 'window-up'}           ,
+      m = {'<C-W>|<C-W>_'   , 'maximum-window'}      ,
       H = {'<C-W>8<'        , 'expand-window-left'}  ,
       J = {cmd('resize +5') , 'expand-window-below'} ,
       L = {'<C-W>8>'        , 'expand-window-right'} ,
-      K = {cmd('resize -5') , 'expand-window-up'}    ,
+      K = {cmd('resize +5') , 'expand-window-up'}    ,
       ['='] = {'<C-W>='     , 'balance-window'}      ,
       ['x'] = {'<C-W>x'     , 'swap 2 windows'}      ,
-      s = {cmd('HopChar2MW'), 'easy motion'}         ,
+      f = {cmd('HopChar2MW'), 'easy motion'}         ,
     }
   }, { prefix = "<Space>" })

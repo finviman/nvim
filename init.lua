@@ -1,5 +1,34 @@
-require'plugins.init'
-require'plugins.config'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = ','
+require("lazy").setup("plugins",{
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
+
 require'mappings'
 
 local function load_options()
@@ -66,7 +95,7 @@ local function load_options()
       helpheight     = 12;
       previewheight  = 12;
       showcmd        = true;
-      cmdheight      = 2;
+      cmdheight      = 1;
       cmdwinheight   = 5;
       equalalways    = false;
       laststatus     = 2;
@@ -76,7 +105,7 @@ local function load_options()
       pumblend       = 10;
       winblend       = 10;
       cursorline     = true;
-      guifont        = "MesloLGS NF:h18";
+      guifont        = "JetBrainsMono Nerd Font:h18";
     }
 
     local bw_local  = {
@@ -115,3 +144,5 @@ local function load_options()
 end
 
 load_options()
+require('zephyr') --speed colorscheme
+require('evil_lualine') 
