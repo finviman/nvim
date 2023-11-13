@@ -129,7 +129,7 @@ local function load_options()
       concealcursor  = "niv";
     }
 
-    vim.g.python3_host_prog = '/usr/bin/python3'
+    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
     vim.g.neovide_remember_window_size = true
     for name, value in pairs(global_local) do
       vim.o[name] = value

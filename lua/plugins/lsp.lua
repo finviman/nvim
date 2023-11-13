@@ -93,8 +93,6 @@ return {
         sources = {
           -- nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.ruff,
-          nls.builtins.formatting.ruff,
         },
       }
     end,
@@ -110,7 +108,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "ruff",
+        "ruff-lsp",
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
