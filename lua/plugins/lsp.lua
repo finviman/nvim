@@ -128,6 +128,14 @@ return {
   {
     "glepnir/lspsaga.nvim",
     event = "BufReadPre",
-    config = true
+    config = true,
+    opts = {
+      outline = {
+        auto_preview = false,
+        keys = {
+          jump = '<enter>'
+        }
+      }
+    }
   },
 }
