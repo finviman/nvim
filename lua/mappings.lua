@@ -107,6 +107,7 @@ wk.register({
        b = {cmd('Telescope buffers') , 'buffer list'}        ,
        d = {cmd('bp|bd #')           , 'kill-buffer'}        ,
        D = {cmd('Bclose')            , 'kill-other-buffers'} ,
+       s = {cmd('HopChar2')          , 'easy motion'}        ,
        [']'] = {cmd('bnext')         , 'next-buffer'}        ,
        ['['] = {cmd('bprevious')     , 'previous-buffer'}    ,
     },
@@ -128,15 +129,28 @@ wk.register({
        R = {cmd('Lspsaga rename')                         , 'rename symbol'}             ,
     }                                                     ,
 
+    d = {
+       name='+Debug'                                      ,
+       b = {cmd('DapToggleBreakpoint')                    , 'toggle breakpoint'}    ,
+       c = {cmd('DapContinue')                    , 'start/continue'}    ,
+       i = {cmd('DapStepInto')                    , 'Step Into'}    ,
+       o = {cmd('DapStepOut')                    , 'Step Out'}    ,
+       O = {cmd('DapStepOver')                    , 'Step Over'}    ,
+       r = {cmd('DapToggleRepl')                    , 'Toggle REPL'}    ,
+       t = {cmd('DapTerminate')                    , 'Terminate'}    ,
+       u = {cmd('DapUiToggle')                    , 'DapUi'}    ,
+
+    },
+
     e = {
        name='+Edit'                ,
-       s = {cmd('HopChar2')          , 'easy motion'}        ,
        t = {cmd('')     , 'text align'}    ,
     },
 
     g = {
       name = "+Git"                                             ,
-      b = {cmd('Gitsigns toggle_current_line_blame')            , 'git blame'}               ,
+      --  b = {cmd('Gitsigns toggle_current_line_blame')            , 'git blame'}               ,
+      b = {cmd('ToggleBlame')                                   , 'git blame'}               ,
       o = {cmd('Telescope git_branches')                        , 'git branch list'}         ,
       s = {cmd('Telescope git_status')                          , 'git status'}              ,
       ['['] = {cmd('lua require"gitsigns.actions".prev_hunk()') , 'previous changed chunk'}  ,

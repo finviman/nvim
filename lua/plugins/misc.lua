@@ -89,6 +89,9 @@ return {
   },
   -- git sign
   {
+    "FabijanZulj/blame.nvim"
+  },
+  {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     opts = {
@@ -157,7 +160,7 @@ return {
             },
           },
           path_display = {
-            "shorten",
+            --  "shorten",
             "absolute",
           },
 
