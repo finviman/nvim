@@ -211,6 +211,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-cmdline",
       "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -254,6 +255,27 @@ return {
           }),
         },
       })
+      -- `/` cmdline setup.
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+        -- `:` cmdline setup.
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          }
+        })
+    })
     end,
   },
 
@@ -314,6 +336,7 @@ return {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
       },
       presets = {
@@ -321,6 +344,19 @@ return {
         command_palette = true,
         long_message_to_split = true,
       },
+      views = {
+        cmdline_popup = {
+          filter_options = {},
+          position = {
+            row = "42%",
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = "auto",
+          },
+        },
+      }
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
