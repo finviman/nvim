@@ -29,6 +29,13 @@ require("lazy").setup("plugins",{
   },
 })
 
+vim.keymap.set(
+    {'n', 'v', 's', 'x', 'o', 'i', 'l', 'c', 't'},
+    '<D-v>',
+    function() vim.api.nvim_paste(vim.fn.getreg('+'), true, -1) end,
+    { noremap = true, silent = true }
+)
+
 require'mappings'
 
 local function load_options()
@@ -129,8 +136,7 @@ local function load_options()
       concealcursor  = "niv";
     }
 
-    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
-    vim.g.neovide_remember_window_size = true
+    vim.g.python3_host_prog = '/opt/homebrew/bin/python'
     for name, value in pairs(global_local) do
       vim.o[name] = value
     end
