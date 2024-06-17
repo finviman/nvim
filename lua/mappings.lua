@@ -142,7 +142,7 @@ wk.register({
     g = {
       name = "+Git"                                             ,
       --  b = {cmd('Gitsigns toggle_current_line_blame')            , 'git blame'}               ,
-      b = {cmd('ToggleBlame')                                   , 'git blame'}               ,
+      b = {cmd('BlameToggle')                                   , 'git blame'}               ,
       o = {cmd('Telescope git_branches')                        , 'git branch list'}         ,
       s = {cmd('Telescope git_status')                          , 'git status'}              ,
       ['['] = {cmd('lua require"gitsigns.actions".prev_hunk()') , 'previous changed chunk'}  ,
