@@ -30,12 +30,11 @@ return {
         lua_ls = {},
         pyright = {},
         bashls = {},
-        tsserver = {},
+        ts_ls = {},
         volar = {},
       },
       setup = {
         -- example to setup with typescript.nvim
-        -- tsserver = function(_, opts)
         --   require("typescript").setup({ server = opts })
         --   return true
         -- end,
@@ -108,7 +107,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "ruff-lsp",
+        "ruff",
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
