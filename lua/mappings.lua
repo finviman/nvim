@@ -72,11 +72,11 @@ require("which-key").setup {
   }
 }
 
-local wk = require("which-key")
 local function cmd(s)
   return '<cmd>'..s..'<cr>'
 end
 local codeBase = '/home/yli/Program/github/'
+local wk = require("which-key")
 wk.register({
     q = {cmd('q')   , 'quit'}         ,
     Q = {cmd('qa!') , 'quit-no-save'} ,
