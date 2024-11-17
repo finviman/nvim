@@ -67,7 +67,7 @@ require("which-key").setup {
       g = false,
     },
   },
-  window = {
+  win = {
     border = "single",
   }
 }
