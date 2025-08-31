@@ -92,7 +92,7 @@ wk.add({
     { "<Space>ca", "<cmd>Lspsaga code_action<cr>", desc = "code action" },
     { "<Space>cc", "<cmd>Lspsaga show_cursor_diagnostics<cr>", desc = "show diagnostics" },
     { "<Space>cd", "<cmd>Telescope lsp_definitions<cr>", desc = "to definition" },
-    { "<Space>ce", "<cmd>!python %<cr>", desc = "Run!" },
+    { "<Space>ce", "<cmd>!python %<cr>", desc = "Run Python!" },
     { "<Space>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "format code" },
     { "<Space>ch", "<cmd>Lspsaga hover_doc<cr>", desc = "code doc" },
     { "<Space>ci", "<cmd>Telescope lsp_implementations<cr>", desc = "to implementation" },

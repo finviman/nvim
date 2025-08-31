@@ -33,7 +33,7 @@ local function on_attach(bufnr)
   -- You will need to insert "your code goes here" for any mappings with a custom action_cb
   vim.keymap.set('n', 'C', api.tree.change_root_to_node, opts('CD'))
   vim.keymap.set('n', 'O', api.tree.expand_all, opts('Expand All'))
-  vim.keymap.set('n', 'v', api.node.open.preview, opts('Open Preview'))
+  vim.keymap.set('n', 'p', api.node.open.preview, opts('Open Preview'))
 end
 
 return {
@@ -363,5 +363,16 @@ return {
     --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
       }
-    }
+    },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  }
+
+
 }
