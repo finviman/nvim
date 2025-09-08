@@ -1,4 +1,5 @@
 local lsp_filetypes={'java','typescript','json','python','lua','vue','javascript','sh','c','cpp','go'}
+
 return {
 	{
     'neovim/nvim-lspconfig',
@@ -28,7 +29,15 @@ return {
       servers = {
         jsonls = {},
         lua_ls = {},
-        pyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                ignore = {'*'}, -- let ruff do this.
+              }
+            }
+          }
+        },
         bashls = {},
         ts_ls = {},
         volar = {},
