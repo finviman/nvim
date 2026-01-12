@@ -38,7 +38,7 @@ end
 
 return {
   { "glepnir/zephyr-nvim" },
-  { "nvim-lualine/lualine.nvim" },
+  { "nvim-lualine/lualine.nvim"},
   { "kyazdani42/nvim-web-devicons" },
   { "akinsho/toggleterm.nvim", tag = "2.3.0", config = true },
   { "folke/which-key.nvim" },
@@ -363,9 +363,10 @@ return {
     --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
       }
-    },
+  },
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    event = "VeryLazy",
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons

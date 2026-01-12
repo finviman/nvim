@@ -28,7 +28,7 @@ return {
       servers = {
         jsonls = {},
         lua_ls = {},
-        pyright = {},
+        basedpyright = {},
         bashls = {},
         ts_ls = {},
         volar = {},
