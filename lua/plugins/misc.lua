@@ -42,15 +42,8 @@ return {
   { "kyazdani42/nvim-web-devicons" },
   { "akinsho/toggleterm.nvim", tag = "2.3.0", config = true },
   { "folke/which-key.nvim" },
-  { "laishulu/vim-macos-ime", lazy = false },
   { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false },
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup()
-    end,
-  },
   { "windwp/nvim-autopairs", event="InsertEnter",config = true },
 
   {
