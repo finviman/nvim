@@ -33,7 +33,7 @@ return {
           settings = {
             basedpyright = {
               analysis = {
-                ignore = {'*'}, -- let ruff do this.
+                --  ignore = {'*'}, -- let ruff do this.
               }
             }
           }
