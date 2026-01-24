@@ -68,7 +68,7 @@ return {
             return
           end
         end
-        require("lspconfig")[server].setup(server_opts)
+        vim.lsp.config(server, {server_opts})
       end
 
       local available = require("mason-lspconfig").get_available_servers()
@@ -87,7 +87,6 @@ return {
       end
 
       require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup_handlers({ setup })
     end
   },
 

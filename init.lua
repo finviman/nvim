@@ -151,4 +151,4 @@ end
 
 load_options()
 require('zephyr') --speed colorscheme
-require('evil_lualine') 
+require('evil_lualine')
