@@ -27,4 +27,13 @@ return {
     end,
   },
   { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      -- 将 dashboard 模块设为 disabled 即可彻底关闭启动主页
+      dashboard = {
+        enabled = false,
+      },
+    },
+  },
 }
