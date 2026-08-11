@@ -36,4 +36,45 @@ return {
       },
     },
   },
+  -- 1. 配置 LSP：同时启动 ruff 和 basedpyright，并屏蔽 basedpyright 的重复诊断
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ruff = {
+          init_options = {
+            settings = {
+              -- 这里可以传 ruff 的命令行参数，例如指定的规则集
+              args = {},
+            },
+          },
+        },
+        -- basedpyright 负责深度静态类型检查
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "basic", -- 可选: "off", "basic", "strict"
+                -- 关掉 basedpyright 内置的废弃/未使用变量提示，全部交给 Ruff
+                diagnosticSeverityOverrides = {
+                  reportUnusedImport = "none",
+                  reportUnusedVariable = "none",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+      },
+    },
+  },
 }
