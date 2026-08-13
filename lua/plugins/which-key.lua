@@ -5,6 +5,9 @@ return {
     preset = "classic",
     win = {
       border = "single",
+      height = { min = 6, max = 20 },
+      width = { min = 20, max = 300 },
+      padding = { 1, 2 },
     },
     spec = {
       -- 1. 退出与基础
@@ -167,14 +170,16 @@ return {
         desc = "DapUi",
       },
 
-      -- 5. Edit
-      { "<leader>e", group = "Edit" },
-      { "<leader>et", "<cmd><cr>", desc = "text align" },
-
       -- 6. Files (替换 NvimTree 为 LazyVim 原生的 Neo-Tree)
       { "<leader>f", group = "Files" },
       { "<leader>fS", "<cmd>wa<cr>", desc = "save all" },
-      { "<leader>fd", "<cmd>lua Ranger_toggle()<cr>", desc = "ranger" },
+      {
+        "<leader>fd",
+        function()
+          Snacks.terminal({ "yazi" })
+        end,
+        desc = "yazi",
+      },
       {
         "<leader>ff",
         function()
