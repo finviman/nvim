@@ -122,7 +122,7 @@ end
 load_options()
 
 if vim.g.neovide then
-  vim.o.guifont = "JetbrainsMono Nerd Font:h17"
+  vim.o.guifont = "JetbrainsMono Nerd Font:h19"
   vim.g.neovide_opacity = 0.95 -- 背景透明度 (0.0 ~ 1.0)
   vim.g.neovide_cursor_vfx_mode = "railgun" -- 光标粒子特效 ("railgun", "torpedo", "pixiedust" 等)
   vim.g.neovide_cursor_animation_length = 0.08 -- 光标移动动画时长
