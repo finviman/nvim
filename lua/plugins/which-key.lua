@@ -291,7 +291,7 @@ return {
       {
         "<leader>pd",
         function()
-          LazyVim.pick("grep_string")()
+          Snacks.picker.grep_word()
         end,
         desc = "cursor word in project",
       },
