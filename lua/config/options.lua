@@ -128,7 +128,7 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.08 -- 光标移动动画时长
   vim.g.neovide_remember_window_size = true -- 记住上一次窗口大小
   vim.g.neovide_confirm_quit = true -- 退出时确认
-  vim.g.neovide_input_macos_alt_is_meta = "both" -- macOS 专享：将 Option/Alt 键映射为 Meta
+  vim.g.neovide_input_macos_alt_is_meta = 1 -- macOS 专享：将 Option/Alt 键映射为 Meta
   local function save()
     vim.cmd.write()
   end
